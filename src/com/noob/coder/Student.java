@@ -1,6 +1,5 @@
 package com.noob.coder;
 
-import java.util.List;
 import java.util.Scanner;
 
 import com.noob.coder.crudlogic.HashMapCrud;
