@@ -10,7 +10,7 @@ import com.noob.coder.dto.StudentDto;
 
 public class ListCrud {
 	static List<StudentDto> al = new ArrayList<StudentDto>();
-	
+
 	public static void crudLoop() {
 		Scanner s = new Scanner(System.in);
 		int ch = 0;
@@ -26,19 +26,29 @@ public class ListCrud {
 
 			switch (ch) {
 			case 1:
+				System.out.println();
 				insertList();
+				System.out.println();
 				break;
 			case 2:
+				System.out.println();
 				displayList();
+				System.out.println();
 				break;
 			case 3:
+				System.out.println();
 				searchList();
+				System.out.println();
 				break;
 			case 4:
+				System.out.println();
 				deleteList();
+				System.out.println();
 				break;
 			case 5:
+				System.out.println();
 				updateList();
+				System.out.println();
 				break;
 			}
 		} while (ch != 0);

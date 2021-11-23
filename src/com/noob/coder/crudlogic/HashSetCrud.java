@@ -25,19 +25,29 @@ public class HashSetCrud {
 
 			switch (ch) {
 			case 1:
+				System.out.println();
 				insertHashSet();
+				System.out.println();
 				break;
 			case 2:
+				System.out.println();
 				displayHashSet();
+				System.out.println();
 				break;
 			case 3:
+				System.out.println();
 				searchHashSet();
+				System.out.println();
 				break;
 			case 4:
+				System.out.println();
 				deleteHashSet();
+				System.out.println();
 				break;
 			case 5:
+				System.out.println();
 				updateHashSet();
+				System.out.println();
 				break;
 			}
 		} while (ch != 0);

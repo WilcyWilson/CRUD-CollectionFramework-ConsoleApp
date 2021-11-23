@@ -24,12 +24,15 @@ public class Student {
 
 		switch (ch) {
 		case 1:
+			System.out.println();
 			ListCrud.crudLoop();
 			break;
 		case 2:
+			System.out.println();
 			HashSetCrud.crudLoop();
 			break;
 		case 3:
+			System.out.println();
 			HashMapCrud.crudLoop();
 			break;
 		}

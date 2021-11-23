@@ -24,19 +24,29 @@ public class HashMapCrud {
 
 			switch (ch) {
 			case 1:
+				System.out.println();
 				insertHashMap();
+				System.out.println();
 				break;
 			case 2:
+				System.out.println();
 				displayHashMap();
+				System.out.println();
 				break;
 			case 3:
+				System.out.println();
 				searchHashMap();
+				System.out.println();
 				break;
 			case 4:
+				System.out.println();
 				deleteHashMap();
+				System.out.println();
 				break;
 			case 5:
+				System.out.println();
 				updateHashMap();
+				System.out.println();
 				break;
 			}
 		} while (ch != 0);
