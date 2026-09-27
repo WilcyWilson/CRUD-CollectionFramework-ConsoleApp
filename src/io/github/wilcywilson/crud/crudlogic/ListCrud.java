@@ -1,4 +1,4 @@
-package com.noob.coder.crudlogic;
+package io.github.wilcywilson.crud.crudlogic;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
 
-import com.noob.coder.dto.StudentDto;
+import io.github.wilcywilson.crud.dto.StudentDto;
 
 public class ListCrud {
 	static List<StudentDto> al = new ArrayList<StudentDto>();

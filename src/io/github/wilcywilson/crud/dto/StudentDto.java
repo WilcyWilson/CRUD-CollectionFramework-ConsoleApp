@@ -1,4 +1,4 @@
-package com.noob.coder.dto;
+package io.github.wilcywilson.crud.dto;
 
 public class StudentDto {
 	private int studentId;

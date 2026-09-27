@@ -1,10 +1,10 @@
-package com.noob.coder.crudlogic;
+package io.github.wilcywilson.crud.crudlogic;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.noob.coder.dto.StudentDto;
+import io.github.wilcywilson.crud.dto.StudentDto;
 
 public class HashMapCrud {
 	static HashMap<Integer, StudentDto> al = new HashMap<Integer, StudentDto>();

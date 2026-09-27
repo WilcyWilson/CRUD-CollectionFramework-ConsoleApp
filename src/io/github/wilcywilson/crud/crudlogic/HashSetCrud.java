@@ -1,10 +1,10 @@
-package com.noob.coder.crudlogic;
+package io.github.wilcywilson.crud.crudlogic;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import com.noob.coder.dto.StudentDto;
+import io.github.wilcywilson.crud.dto.StudentDto;
 
 
 public class HashSetCrud {
