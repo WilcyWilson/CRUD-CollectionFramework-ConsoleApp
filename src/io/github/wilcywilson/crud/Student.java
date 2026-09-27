@@ -14,10 +14,13 @@ public class Student {
     }
 
     public static void chooseCollectionFramework() {
-        System.out.println("1.List");
-        System.out.println("2.HashSet");
-        System.out.println("3.HashMap");
-        System.out.println("Enter Your Choice : ");
+        String mainMenu = """
+                1.List
+                2.HashSet
+                3.HashMap
+                Enter Your Choice : \
+                """;
+        System.out.print(mainMenu);
 
         try (var scanner = new Scanner(System.in)) {
             if (scanner.hasNextInt()) {
