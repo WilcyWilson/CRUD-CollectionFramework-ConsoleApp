@@ -25,7 +25,7 @@ public class Student {
         try (var scanner = new Scanner(System.in)) {
             if (scanner.hasNextInt()) {
                 int input = scanner.nextInt();
-                Choice userChoice = Choice.fromInteger(input);
+                Choice userChoice = Choice.fromInteger(input).orElse(Choice.UNKNOWN);
 
                 switch (userChoice) {
                     case LIST -> {
@@ -40,7 +40,7 @@ public class Student {
                         System.out.println();
                         HashMapCrud.crudLoop();
                     }
-                    case null -> System.out.println("Invalid Selection. Please choose correct 1, 2 or 3");
+                    case UNKNOWN -> System.out.println("Invalid Selection. Please choose correct 1, 2 or 3");
                 }
             } else System.out.println("Please enter a valid option");
         }
