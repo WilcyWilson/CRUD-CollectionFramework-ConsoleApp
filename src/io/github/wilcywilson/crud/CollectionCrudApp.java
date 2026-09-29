@@ -7,9 +7,9 @@ import io.github.wilcywilson.crud.enums.Choice;
 
 import java.util.Scanner;
 
-public class Student {
+public class CollectionCrudApp {
 
-    static void main() {
+    public static void main(String[] args) {
         chooseCollectionFramework();
     }
 
