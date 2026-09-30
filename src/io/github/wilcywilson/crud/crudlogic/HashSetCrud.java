@@ -5,14 +5,15 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import io.github.wilcywilson.crud.dto.StudentDto;
+import io.github.wilcywilson.crud.interfaces.CrudOperations;
 
 
-public class HashSetCrud {
+public class HashSetCrud implements CrudOperations {
 	static HashSet<StudentDto> hs = new HashSet<StudentDto>();
-	
-	public static void crudLoop() {
-		Scanner s = new Scanner(System.in);
-		int ch = 0;
+
+	@Override
+	public void crudLoop(Scanner scanner) {
+		int ch;
 		do {
 			System.out.println("1.INSERT");
 			System.out.println("2.DISPLAY");
@@ -21,7 +22,7 @@ public class HashSetCrud {
 			System.out.println("5.UPDATE");
 			System.out.println("0.EXIT");
 			System.out.println("Enter Your Choice : ");
-			ch = s.nextInt();
+			ch = scanner.nextInt();
 
 			switch (ch) {
 			case 1:
