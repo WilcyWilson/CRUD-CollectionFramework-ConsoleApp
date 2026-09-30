@@ -10,19 +10,15 @@ import io.github.wilcywilson.crud.interfaces.CrudOperations;
 import java.util.Scanner;
 
 public class CollectionCrudApp {
-
-    public static void main(String[] args) {
-        chooseCollectionFramework();
-    }
+    private static final String MAIN_MENU = """
+            1.List
+            2.HashSet
+            3.HashMap
+            Enter Your Choice : \
+            """;
 
     public static void chooseCollectionFramework() {
-        String mainMenu = """
-                1.List
-                2.HashSet
-                3.HashMap
-                Enter Your Choice : \
-                """;
-        System.out.print(mainMenu);
+        System.out.print(MAIN_MENU);
 
         try (var scanner = new Scanner(System.in)) {
             if (scanner.hasNextInt()) {
@@ -53,5 +49,9 @@ public class CollectionCrudApp {
                 System.out.println("Please enter a valid option");
             }
         }
+    }
+
+    public static void main(String[] args) {
+        chooseCollectionFramework();
     }
 }
