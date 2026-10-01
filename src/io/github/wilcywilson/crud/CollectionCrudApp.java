@@ -4,7 +4,7 @@ import io.github.wilcywilson.crud.crudlogic.HashMapCrud;
 import io.github.wilcywilson.crud.crudlogic.HashSetCrud;
 import io.github.wilcywilson.crud.crudlogic.ListCrud;
 import io.github.wilcywilson.crud.crudlogic.UnknownCrud;
-import io.github.wilcywilson.crud.enums.Choice;
+import io.github.wilcywilson.crud.enums.MainMenuChoice;
 import io.github.wilcywilson.crud.interfaces.CrudOperations;
 
 import java.util.Scanner;
@@ -18,20 +18,24 @@ public class CollectionCrudApp {
             """;
 
     private static void chooseCollectionFramework() {
-        System.out.print(MAIN_MENU);
+
 
         try (var scanner = new Scanner(System.in)) {
-            CrudOperations crudChoice = scanner.hasNextInt() ? selectCrud(scanner.nextInt()) : new UnknownCrud();
-
-            System.out.println();
-            crudChoice.crudLoop(scanner);
+            CrudOperations crudChoice;
+            do {
+                System.out.print(MAIN_MENU);
+                crudChoice = scanner.hasNextInt() ? selectCrud(scanner.nextInt()) : new UnknownCrud();
+                System.out.println();
+                crudChoice.crudLoop(scanner);
+//                scanner.nextLine(); // Clear leftover newline characters before reading anything else
+            } while(!(crudChoice instanceof UnknownCrud));
         }
     }
 
     private static CrudOperations selectCrud(int input) {
-        Choice userChoice = Choice.choiceFromInteger(input).orElse(Choice.UNKNOWN);
+        MainMenuChoice userMainMenuChoice = MainMenuChoice.choiceFromInteger(input).orElse(MainMenuChoice.UNKNOWN);
 
-        return switch (userChoice) {
+        return switch (userMainMenuChoice) {
             case UNKNOWN -> new UnknownCrud();
             case LIST -> new ListCrud();
             case HASHMAP -> new HashMapCrud();

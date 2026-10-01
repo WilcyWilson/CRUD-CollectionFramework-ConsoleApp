@@ -80,7 +80,7 @@ public class HashSetCrud implements CrudOperations {
 	public static void searchHashSet() {
 		boolean found = false;
 		Scanner sId = new Scanner(System.in);
-		System.out.println("Enter Employee Id to Search:");
+		System.out.println("Enter Student Id to Search:");
 		int studentId = sId.nextInt();
 		"-".repeat(20);
 		Iterator<StudentDto> itr = hs.iterator();
@@ -101,7 +101,7 @@ public class HashSetCrud implements CrudOperations {
 	public static void deleteHashSet() {
 		boolean found = false;
 		Scanner sId = new Scanner(System.in);
-		System.out.println("Enter Employee Id to Delete:");
+		System.out.println("Enter Student Id to Delete:");
 		int studentId = sId.nextInt();
 		"-".repeat(20);
 		Iterator<StudentDto> itr = hs.iterator();
@@ -125,7 +125,7 @@ public class HashSetCrud implements CrudOperations {
 		Scanner sId = new Scanner(System.in);
 		Scanner sName = new Scanner(System.in);
 		Scanner sFaculty = new Scanner(System.in);
-		System.out.println("Enter Employee Id to Update:");
+		System.out.println("Enter Student Id to Update:");
 		int studentId = sId.nextInt();
 		"-".repeat(20);
 		Iterator<StudentDto> itr = hs.iterator();
