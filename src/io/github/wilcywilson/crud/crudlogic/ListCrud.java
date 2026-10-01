@@ -87,7 +87,7 @@ public class ListCrud implements CrudOperations {
 		Iterator<StudentDto> itr = al.iterator();
 		while (itr.hasNext()) {
 			StudentDto student = itr.next();
-			if (student.getStudentId() == studentId) {
+			if (student.studentId() == studentId) {
 				System.out.println("Record Found");
 				System.out.println(student);
 				found = true;
@@ -108,7 +108,7 @@ public class ListCrud implements CrudOperations {
 		Iterator<StudentDto> itr = al.iterator();
 		while (itr.hasNext()) {
 			StudentDto student = itr.next();
-			if (student.getStudentId() == studentId) {
+			if (student.studentId() == studentId) {
 				itr.remove();
 				found = true;
 			}
@@ -132,7 +132,7 @@ public class ListCrud implements CrudOperations {
 		ListIterator<StudentDto> itr = al.listIterator();
 		while (itr.hasNext()) {
 			StudentDto student = itr.next();
-			if (student.getStudentId() == studentId) {
+			if (student.studentId() == studentId) {
 				System.out.println("Enter new Student Name :");
 				String studentName = sName.nextLine();
 				System.out.println("Enter new Student Faculty :");

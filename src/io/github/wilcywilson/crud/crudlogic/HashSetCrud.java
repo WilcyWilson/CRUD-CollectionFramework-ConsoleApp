@@ -86,7 +86,7 @@ public class HashSetCrud implements CrudOperations {
 		Iterator<StudentDto> itr = hs.iterator();
 		while (itr.hasNext()) {
 			StudentDto student = itr.next();
-			if (student.getStudentId() == studentId) {
+			if (student.studentId() == studentId) {
 				System.out.println("Record Found");
 				System.out.println(student);
 				found = true;
@@ -107,7 +107,7 @@ public class HashSetCrud implements CrudOperations {
 		Iterator<StudentDto> itr = hs.iterator();
 		while (itr.hasNext()) {
 			StudentDto student = itr.next();
-			if (student.getStudentId() == studentId) {
+			if (student.studentId() == studentId) {
 				itr.remove();
 				found = true;
 			}
@@ -131,7 +131,7 @@ public class HashSetCrud implements CrudOperations {
 		Iterator<StudentDto> itr = hs.iterator();
 		while (itr.hasNext()) {
 			StudentDto student = itr.next();
-			if (student.getStudentId() == studentId) {
+			if (student.studentId() == studentId) {
 				hs.remove(student);
 				System.out.println("Enter new Student Name :");
 				String studentName = sName.nextLine();
