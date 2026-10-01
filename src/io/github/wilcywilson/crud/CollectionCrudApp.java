@@ -17,38 +17,26 @@ public class CollectionCrudApp {
             Enter Your Choice : \
             """;
 
-    public static void chooseCollectionFramework() {
+    private static void chooseCollectionFramework() {
         System.out.print(MAIN_MENU);
 
         try (var scanner = new Scanner(System.in)) {
-            if (scanner.hasNextInt()) {
-                int input = scanner.nextInt();
-                Choice userChoice = Choice.fromInteger(input).orElse(Choice.UNKNOWN);
+            CrudOperations crudChoice = scanner.hasNextInt() ? selectCrud(scanner.nextInt()) : new UnknownCrud();
 
-                CrudOperations crudChoice = switch (userChoice) {
-                    case LIST -> {
-                        System.out.println();
-                        yield new ListCrud();
-                    }
-                    case HASHSET -> {
-                        System.out.println();
-                        yield new HashSetCrud();
-                    }
-                    case HASHMAP -> {
-                        System.out.println();
-                        yield new HashMapCrud();
-                    }
-                    case UNKNOWN -> {
-                        System.out.println();
-                        yield new UnknownCrud();
-                    }
-                };
-                crudChoice.crudLoop(scanner);
-            } else {
-                System.out.println();
-                System.out.println("Please enter a valid option");
-            }
+            System.out.println();
+            crudChoice.crudLoop(scanner);
         }
+    }
+
+    private static CrudOperations selectCrud(int input) {
+        Choice userChoice = Choice.choiceFromInteger(input).orElse(Choice.UNKNOWN);
+
+        return switch (userChoice) {
+            case UNKNOWN -> new UnknownCrud();
+            case LIST -> new ListCrud();
+            case HASHMAP -> new HashMapCrud();
+            case HASHSET -> new HashSetCrud();
+        };
     }
 
     public static void main(String[] args) {

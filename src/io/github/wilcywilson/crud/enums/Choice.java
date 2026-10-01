@@ -15,7 +15,7 @@ public enum Choice {
         this.value = value;
     }
 
-    public static Optional<Choice> fromInteger(int input) {
+    public static Optional<Choice> choiceFromInteger(int input) {
         for (Choice choice : Choice.values()) {
             if (choice.value == input) {
                 return Optional.of(choice);
