@@ -22,7 +22,7 @@ public class ListCrud implements CrudOperations {
                 3.SEARCH
                 4.DELETE
                 5.UPDATE
-                0.EXIT\n
+                0.EXIT
                 """;
     }
 
