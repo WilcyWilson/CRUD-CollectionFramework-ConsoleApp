@@ -4,8 +4,8 @@ public record StudentDto(int studentId, String studentName, String studentFacult
 
 	@Override
 	public String toString() {
-		return studentId + "\t" + studentName + "\t"
-				+ studentFaculty;
+		return "\"" + studentId + "\",\"" + studentName + "\",\""
+				+ studentFaculty + "\"";
 	}
 
 }

@@ -13,7 +13,8 @@ public class CollectionCrudApp {
             1.List
             2.HashSet
             3.HashMap
-            0.Exit\n
+            0.Exit
+            
             """;
 
     private static void chooseCollectionFramework() {
