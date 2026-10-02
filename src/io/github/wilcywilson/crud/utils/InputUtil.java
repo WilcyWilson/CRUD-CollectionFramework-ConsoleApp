@@ -13,7 +13,7 @@ public class InputUtil {
             try {
                 return Integer.parseInt(line);
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a valid number.");
+                System.out.println("\nPlease enter a valid number.\n");
             }
         }
     }

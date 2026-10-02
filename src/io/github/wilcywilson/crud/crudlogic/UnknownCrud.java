@@ -7,6 +7,6 @@ import java.util.Scanner;
 public class UnknownCrud implements CrudOperations {
     @Override
     public void crudMainLoop(Scanner scanner) {
-        System.out.println("Invalid Selection. Please choose correct 1, 2 or 3");
+        System.out.println("Invalid Selection. Please choose correct option from the menu\n");
     }
 }

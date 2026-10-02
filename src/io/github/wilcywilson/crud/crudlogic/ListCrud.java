@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import io.github.wilcywilson.crud.dto.StudentDto;
 import io.github.wilcywilson.crud.interfaces.CrudOperations;
+import io.github.wilcywilson.crud.utils.InputUtil;
 
 public class ListCrud implements CrudOperations {
     static List<StudentDto> studentDtoArrayList = new ArrayList<>();
@@ -21,8 +22,7 @@ public class ListCrud implements CrudOperations {
                 3.SEARCH
                 4.DELETE
                 5.UPDATE
-                0.EXIT
-                Enter Your Choice : \
+                0.EXIT\n
                 """;
     }
 
@@ -31,7 +31,7 @@ public class ListCrud implements CrudOperations {
         int ch;
         do {
             System.out.print(crudMenu());
-            ch = scanner.nextInt();
+            ch = InputUtil.readInt(scanner, "Enter Your Choice : ");
 
             switch (ch) {
                 case 1:
@@ -65,12 +65,10 @@ public class ListCrud implements CrudOperations {
     }
 
     public static void insertList(Scanner scanner) {
-        System.out.println("Enter Student Id :");
-        int studentId = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Enter Student Name :");
+        int studentId = InputUtil.readInt(scanner, "Enter Student Id : ");
+        System.out.print("Enter Student Name : ");
         String studentName = scanner.nextLine();
-        System.out.println("Enter Student Faculty :");
+        System.out.print("Enter Student Faculty : ");
         String studentFaculty = scanner.nextLine();
         studentDtoArrayList.add(new StudentDto(studentId, studentName, studentFaculty));
     }
@@ -87,8 +85,8 @@ public class ListCrud implements CrudOperations {
 
     public static void searchList(Scanner scanner) {
         boolean found = false;
-        System.out.println("Enter Student Id to Search:");
-        int studentId = scanner.nextInt();
+
+        int studentId = InputUtil.readInt(scanner, "Enter Student Id to Search : ");
         "-".repeat(20);
         Iterator<StudentDto> itr = studentDtoArrayList.iterator();
         while (itr.hasNext()) {
@@ -107,8 +105,7 @@ public class ListCrud implements CrudOperations {
 
     public static void deleteList(Scanner scanner) {
         boolean found = false;
-        System.out.println("Enter Student Id to Delete:");
-        int studentId = scanner.nextInt();
+        int studentId = InputUtil.readInt(scanner, "Enter Student Id to Delete : ");
         "-".repeat(20);
         Iterator<StudentDto> itr = studentDtoArrayList.iterator();
         while (itr.hasNext()) {
@@ -128,8 +125,7 @@ public class ListCrud implements CrudOperations {
 
     public static void updateList(Scanner scanner) {
         boolean found = false;
-        System.out.println("Enter Student Id to Update:");
-        int studentId = scanner.nextInt();
+        int studentId = InputUtil.readInt(scanner, "Enter Student Id to Update : ");
         "-".repeat(20);
         ListIterator<StudentDto> itr = studentDtoArrayList.listIterator();
         while (itr.hasNext()) {
