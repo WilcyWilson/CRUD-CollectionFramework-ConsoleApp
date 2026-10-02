@@ -11,7 +11,7 @@ public class HashMapCrud implements CrudOperations {
 	static HashMap<Integer, StudentDto> al = new HashMap<Integer, StudentDto>();
 
 	@Override
-	public void crudLoop(Scanner scanner) {
+	public void crudMainLoop(Scanner scanner) {
 		int ch;
 		do {
 			System.out.println("1.INSERT");

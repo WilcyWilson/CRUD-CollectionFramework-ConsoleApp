@@ -3,7 +3,8 @@ package io.github.wilcywilson.crud.enums;
 import java.util.Optional;
 
 public enum MainMenuChoice {
-    UNKNOWN(0),
+    UNKNOWN(-1),
+    EXIT(0),
     LIST(1),
     HASHSET(2),
     HASHMAP(3);

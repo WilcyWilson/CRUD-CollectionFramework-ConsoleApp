@@ -12,7 +12,21 @@ public class HashSetCrud implements CrudOperations {
 	static HashSet<StudentDto> hs = new HashSet<StudentDto>();
 
 	@Override
-	public void crudLoop(Scanner scanner) {
+	public String crudMenu() {
+		return """
+                ------ HashSet Menu ------
+                1.INSERT
+                2.DISPLAY
+                3.SEARCH
+                4.DELETE
+                5.UPDATE
+                0.EXIT
+                Enter Your Choice : \
+                """;
+	}
+
+	@Override
+	public void crudMainLoop(Scanner scanner) {
 		int ch;
 		do {
 			System.out.println("1.INSERT");
