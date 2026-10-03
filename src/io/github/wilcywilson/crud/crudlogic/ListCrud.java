@@ -31,7 +31,7 @@ public class ListCrud implements CrudOperations {
         int ch;
         do {
             System.out.print(crudMenu());
-            ch = InputUtil.readInt(scanner, "Enter Your Choice : ");
+            ch = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
 
             switch (ch) {
                 case 1:
@@ -65,9 +65,8 @@ public class ListCrud implements CrudOperations {
     }
 
     public static void insertList(Scanner scanner) {
-        int studentId = InputUtil.readInt(scanner, "Enter Student Id : ");
-        System.out.print("Enter Student Name : ");
-        String studentName = scanner.nextLine();
+        int studentId = InputUtil.prompt(scanner, "Enter Student Id : ", Integer::parseInt);
+        String studentName = InputUtil.prompt(scanner, "Enter Student Name : ", s -> s);
         System.out.print("Enter Student Faculty : ");
         String studentFaculty = scanner.nextLine();
         studentDtoArrayList.add(new StudentDto(studentId, studentName, studentFaculty));
@@ -86,7 +85,7 @@ public class ListCrud implements CrudOperations {
     public static void searchList(Scanner scanner) {
         boolean found = false;
 
-        int studentId = InputUtil.readInt(scanner, "Enter Student Id to Search : ");
+        int studentId = InputUtil.prompt(scanner, "Enter Student Id to Search : ", Integer::parseInt);
         "-".repeat(20);
         Iterator<StudentDto> itr = studentDtoArrayList.iterator();
         while (itr.hasNext()) {
@@ -105,7 +104,7 @@ public class ListCrud implements CrudOperations {
 
     public static void deleteList(Scanner scanner) {
         boolean found = false;
-        int studentId = InputUtil.readInt(scanner, "Enter Student Id to Delete : ");
+        int studentId = InputUtil.prompt(scanner, "Enter Student Id to Delete : ", Integer::parseInt);
         "-".repeat(20);
         Iterator<StudentDto> itr = studentDtoArrayList.iterator();
         while (itr.hasNext()) {
@@ -125,7 +124,7 @@ public class ListCrud implements CrudOperations {
 
     public static void updateList(Scanner scanner) {
         boolean found = false;
-        int studentId = InputUtil.readInt(scanner, "Enter Student Id to Update : ");
+        int studentId = InputUtil.prompt(scanner, "Enter Student Id to Update : ", Integer::parseInt);
         "-".repeat(20);
         ListIterator<StudentDto> itr = studentDtoArrayList.listIterator();
         while (itr.hasNext()) {

@@ -30,7 +30,7 @@ public class HashMapCrud implements CrudOperations {
         int ch;
         do {
             System.out.print(crudMenu());
-            ch = InputUtil.readInt(scanner, "Enter Your Choice : ");
+            ch = InputUtil.prompt(scanner, "Enter Your Choice : ",Integer::parseInt);
 
             switch (ch) {
                 case 1:

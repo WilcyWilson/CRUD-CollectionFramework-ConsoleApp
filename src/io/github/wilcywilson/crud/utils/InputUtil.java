@@ -1,19 +1,20 @@
 package io.github.wilcywilson.crud.utils;
 
 import java.util.Scanner;
+import java.util.function.Function;
 
 public class InputUtil {
     private InputUtil() {
     }
 
-    public static int readInt(Scanner scanner, String prompt) {
+    public static <T> T prompt(Scanner scanner, String prompt, Function<String, T> parser) {
         while (true) {
             System.out.print(prompt);
             String line = scanner.nextLine().trim();
             try {
-                return Integer.parseInt(line);
-            } catch (NumberFormatException e) {
-                System.out.println("\nPlease enter a valid number.\n");
+                return parser.apply(line);
+            } catch (RuntimeException e) {
+                System.out.println("\nInvalid Input. Please try again\n");
             }
         }
     }

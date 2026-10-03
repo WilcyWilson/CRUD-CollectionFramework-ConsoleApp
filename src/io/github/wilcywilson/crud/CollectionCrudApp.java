@@ -22,7 +22,7 @@ public class CollectionCrudApp {
             CrudOperations crudChoice;
             do {
                 System.out.print(MAIN_MENU);
-                int input = InputUtil.readInt(scanner, "Enter Your Choice : ");
+                int input = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
                 crudChoice = selectCrud(input);
                 System.out.println();
                 crudChoice.crudMainLoop(scanner);
