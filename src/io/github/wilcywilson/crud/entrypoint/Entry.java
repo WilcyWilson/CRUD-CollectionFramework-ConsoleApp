@@ -21,7 +21,7 @@ public class Entry {
         try (var scanner = new Scanner(System.in)) {
             CrudOperations crudChoice;
             do {
-                System.out.print(MenuCreator.createMenu(MainMenuChoice.EXIT));
+                MenuCreator.createMenu(MainMenuChoice.EXIT);
 //                System.out.print(MAIN_MENU);
                 int input = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
                 crudChoice = selectCrud(input);

@@ -5,10 +5,10 @@ import io.github.wilcywilson.crud.interfaces.MenuOperations;
 import java.awt.*;
 
 public class MenuCreator {
-    public static String createMenu(MenuOperations menuOperations) {
-        return """
+    public static void createMenu(MenuOperations menuOperations) {
+        System.out.print("""
+                ------ %s ------
                 %s
-                %s
-                """.formatted(menuOperations.retrieveTitle(), menuOperations.retrieveOptions());
+                """.formatted(menuOperations.retrieveTitle(""), menuOperations.retrieveOptions()));
     }
 }
