@@ -28,9 +28,7 @@ public enum MainMenuChoice implements MenuOperations {
 
     @Override
     public String retrieveTitle(String additionalInfo) {
-        return """
-               Main Menu%s\
-               """.formatted(additionalInfo);
+        return "Main Menu" + additionalInfo;
     }
 
     @Override

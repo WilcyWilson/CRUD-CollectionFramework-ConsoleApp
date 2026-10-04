@@ -6,9 +6,9 @@ import java.awt.*;
 
 public class MenuCreator {
     public static void createMenu(MenuOperations menuOperations) {
-        System.out.print("""
-                ------ %s ------
-                %s
-                """.formatted(menuOperations.retrieveTitle(""), menuOperations.retrieveOptions()));
+        System.out.printf("""
+        ------ %s ------
+        %s
+        """, menuOperations.retrieveTitle(""), menuOperations.retrieveOptions());
     }
 }
