@@ -16,10 +16,8 @@ public enum Menu {
     public String getTitle(String... additionalInfos) {
         StringBuilder info = new StringBuilder();
         info.append(title);
-        if (additionalInfos.length > 0) {
-            for (String additionalInfo : additionalInfos) {
-                info.append(" [").append(additionalInfo).append("]");
-            }
+        for (String additionalInfo : additionalInfos) {
+            info.append(" [").append(additionalInfo).append("]");
         }
         return info.toString();
     }

@@ -14,6 +14,6 @@ public class MenuCreator {
         System.out.printf("""
                 ------ %s ------
                 %s
-                """, menu.getTitle("List"), options);
+                """, menu.getTitle(), options);
     }
 }
