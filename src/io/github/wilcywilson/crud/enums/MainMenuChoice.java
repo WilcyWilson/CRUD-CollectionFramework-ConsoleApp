@@ -1,15 +1,15 @@
 package io.github.wilcywilson.crud.enums;
 
-import io.github.wilcywilson.crud.interfaces.MenuOperations;
+import io.github.wilcywilson.crud.interfaces.MenuChoice;
 
 import java.util.Optional;
 
-public enum MainMenuChoice implements MenuOperations {
-    UNKNOWN(-1),
-    EXIT(0),
+public enum MainMenuChoice implements MenuChoice {
     LIST(1),
     HASHSET(2),
-    HASHMAP(3);
+    HASHMAP(3),
+    UNKNOWN(-1),
+    EXIT(0);
 
     private final int value;
 
@@ -27,16 +27,7 @@ public enum MainMenuChoice implements MenuOperations {
     }
 
     @Override
-    public String retrieveTitle(String additionalInfo) {
-        return "Main Menu" + additionalInfo;
-    }
-
-    @Override
-    public String retrieveOptions() {
-        StringBuilder menuNames = new StringBuilder();
-        for (MainMenuChoice mainMenuChoice : MainMenuChoice.values()) {
-            menuNames.append(mainMenuChoice.value).append(".").append(mainMenuChoice.name()).append("\n");
-        }
-        return menuNames.toString();
+    public int getValue() {
+        return value;
     }
 }

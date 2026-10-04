@@ -2,6 +2,7 @@ package io.github.wilcywilson.crud.entrypoint;
 
 import io.github.wilcywilson.crud.crudlogic.*;
 import io.github.wilcywilson.crud.enums.MainMenuChoice;
+import io.github.wilcywilson.crud.enums.Menu;
 import io.github.wilcywilson.crud.interfaces.CrudOperations;
 import io.github.wilcywilson.crud.utils.InputUtil;
 
@@ -21,7 +22,7 @@ public class Entry {
         try (var scanner = new Scanner(System.in)) {
             CrudOperations crudChoice;
             do {
-                MenuCreator.createMenu(MainMenuChoice.EXIT);
+                MenuCreator.createMenu(Menu.MAIN);
 //                System.out.print(MAIN_MENU);
                 int input = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
                 crudChoice = selectCrud(input);
