@@ -11,7 +11,8 @@ public interface CrudOperations {
                 4.DELETE
                 5.UPDATE
                 0.EXIT
-                Enter Your Choice : \
+                Enter Your Choice :
+                
                 """;
     }
 

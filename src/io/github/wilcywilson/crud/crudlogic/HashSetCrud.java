@@ -22,6 +22,7 @@ public class HashSetCrud implements CrudOperations {
                 4.DELETE
                 5.UPDATE
                 0.EXIT
+                
                 """;
     }
 
