@@ -7,6 +7,8 @@ import java.util.ListIterator;
 import java.util.Scanner;
 
 import io.github.wilcywilson.crud.dto.StudentDto;
+import io.github.wilcywilson.crud.entrypoint.MenuCreator;
+import io.github.wilcywilson.crud.enums.Menu;
 import io.github.wilcywilson.crud.interfaces.CrudOperations;
 import io.github.wilcywilson.crud.utils.InputUtil;
 
@@ -31,7 +33,8 @@ public class ListCrud implements CrudOperations {
     public void crudMainLoop(Scanner scanner) {
         int ch;
         do {
-            System.out.print(crudMenu());
+            MenuCreator.createMenu(Menu.CRUD, "ArrayList");
+//            System.out.print(crudMenu());
             ch = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
 
             switch (ch) {

@@ -9,14 +9,6 @@ import io.github.wilcywilson.crud.utils.InputUtil;
 import java.util.Scanner;
 
 public class Entry {
-    private static final String MAIN_MENU = """
-            ------ Main Menu ------
-            1.List
-            2.HashSet
-            3.HashMap
-            0.Exit
-            
-            """;
 
     public static void chooseCollectionFramework() {
         try (var scanner = new Scanner(System.in)) {
