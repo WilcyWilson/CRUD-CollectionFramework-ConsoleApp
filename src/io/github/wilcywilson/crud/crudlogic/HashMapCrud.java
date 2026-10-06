@@ -21,7 +21,6 @@ public class HashMapCrud implements CrudOperations {
                 4.DELETE
                 5.UPDATE
                 0.EXIT
-                
                 """;
     }
 

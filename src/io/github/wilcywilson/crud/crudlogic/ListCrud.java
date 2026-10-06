@@ -55,7 +55,6 @@ public class ListCrud implements CrudOperations {
                     break;
             }
         } while (ch != 0);
-        System.out.println();
     }
 
     public static void insertList(Scanner scanner) {

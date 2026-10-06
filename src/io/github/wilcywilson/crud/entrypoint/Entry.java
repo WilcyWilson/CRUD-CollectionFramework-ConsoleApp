@@ -15,10 +15,8 @@ public class Entry {
             CrudOperations crudChoice;
             do {
                 MenuCreator.createMenu(Menu.MAIN);
-//                System.out.print(MAIN_MENU);
                 int input = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
                 crudChoice = selectCrud(input);
-                System.out.println();
                 crudChoice.crudMainLoop(scanner);
             } while (!(crudChoice instanceof ExitCrud));
         }

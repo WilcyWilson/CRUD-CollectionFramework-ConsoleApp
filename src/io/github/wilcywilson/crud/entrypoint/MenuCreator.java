@@ -18,13 +18,11 @@ public class MenuCreator {
         if (additionalInfos.length < 1) {
             System.out.printf("""
                     ------ %s ------
-                    %s
-                    """, menu.getTitle(), options);
+                    %s""", menu.getTitle(), options);
         } else {
             System.out.printf("""
                     ------ %s ------
-                    %s
-                    """, menu.getTitle(additionalInfos), options);
+                    %s""", menu.getTitle(additionalInfos), options);
         }
 
     }
