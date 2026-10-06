@@ -3,8 +3,8 @@ package io.github.wilcywilson.crud.enums;
 import io.github.wilcywilson.crud.interfaces.MenuChoice;
 
 public enum Menu {
-    MAIN("Main Menu", MainMenuChoice.values()),
-    CRUD("CRUD Menu", CrudChoice.values());
+    MAIN("Choose the Collection Framework", MainMenuChoice.values()),
+    CRUD("Choose the Storage Engine", CrudChoice.values());
 
     private final String title;
     private final MenuChoice[] choices;

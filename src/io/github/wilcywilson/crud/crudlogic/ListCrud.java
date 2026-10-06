@@ -14,27 +14,17 @@ import io.github.wilcywilson.crud.utils.InputUtil;
 
 public class ListCrud implements CrudOperations {
     static List<StudentDto> studentDtoArrayList = new ArrayList<>();
+    private final String additionalInfo;
 
-    @Override
-    public String crudMenu() {
-        return """
-                ------ List Menu ------
-                1.INSERT
-                2.DISPLAY
-                3.SEARCH
-                4.DELETE
-                5.UPDATE
-                0.EXIT
-                
-                """;
+    public ListCrud(String additionalInfo) {
+        this.additionalInfo = additionalInfo;
     }
 
     @Override
     public void crudMainLoop(Scanner scanner) {
         int ch;
         do {
-            MenuCreator.createMenu(Menu.CRUD, "ArrayList");
-//            System.out.print(crudMenu());
+            MenuCreator.createMenu(Menu.CRUD, additionalInfo);
             ch = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
 
             switch (ch) {

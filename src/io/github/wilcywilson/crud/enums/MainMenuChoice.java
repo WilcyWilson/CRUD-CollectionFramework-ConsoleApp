@@ -6,8 +6,9 @@ import java.util.Optional;
 
 public enum MainMenuChoice implements MenuChoice {
     LIST(1),
-    HASHSET(2),
-    HASHMAP(3),
+    SET(2),
+    QUEUE(3),
+    MAP(4),
     UNKNOWN(-1),
     EXIT(0);
 

@@ -30,9 +30,10 @@ public class Entry {
         return switch (userMainMenuChoice) {
             case UNKNOWN -> new UnknownCrud();
             case EXIT -> new ExitCrud();
-            case LIST -> new ListCrud();
-            case HASHMAP -> new HashMapCrud();
-            case HASHSET -> new HashSetCrud();
+            case LIST -> new ListCrud(userMainMenuChoice.name());
+            case MAP -> new HashMapCrud();
+            case QUEUE -> new QueueCrud();
+            case SET -> new HashSetCrud();
         };
     }
 }
