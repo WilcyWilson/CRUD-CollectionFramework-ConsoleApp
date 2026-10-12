@@ -1,19 +1,14 @@
 package io.github.wilcywilson.crud.crudlogic;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Scanner;
-
 import io.github.wilcywilson.crud.dto.StudentDto;
 import io.github.wilcywilson.crud.entrypoint.MenuCreator;
 import io.github.wilcywilson.crud.enums.ListMenuChoice;
-import io.github.wilcywilson.crud.enums.MainMenuChoice;
 import io.github.wilcywilson.crud.enums.Menu;
 import io.github.wilcywilson.crud.interfaces.ListOperations;
 import io.github.wilcywilson.crud.interfaces.MainOperations;
 import io.github.wilcywilson.crud.utils.InputUtil;
+
+import java.util.*;
 
 public class ListMain implements MainOperations {
     static List<StudentDto> studentDtoArrayList = new ArrayList<>();
@@ -25,43 +20,19 @@ public class ListMain implements MainOperations {
 
     @Override
     public void storageEngineLoop(Scanner scanner) {
-        int input;
+        ListOperations listChoice;
         do {
             MenuCreator.createMenu(Menu.LIST_STORAGE_ENGINE, additionalInfo);
-            input = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
-
-            switch (input) {
-                case 1:
-                    System.out.println();
-                    insertList(scanner);
-                    System.out.println();
-                    break;
-                case 2:
-                    System.out.println();
-                    displayList();
-                    System.out.println();
-                    break;
-                case 3:
-                    System.out.println();
-                    searchList(scanner);
-                    System.out.println();
-                    break;
-                case 4:
-                    System.out.println();
-                    deleteList(scanner);
-                    System.out.println();
-                    break;
-                case 5:
-                    System.out.println();
-                    updateList(scanner);
-                    System.out.println();
-                    break;
-            }
-        } while (input != 0);
+            int input = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
+            listChoice = selectList(input);
+            listChoice.dataSchemaLoop(scanner);
+        } while (!(listChoice instanceof ExitStorageEngine));
     }
 
     private static ListOperations selectList(int input) {
-        ListMenuChoice listMenuChoice = ListMenuChoice.choiceFromInteger(input).orElse(ListMenuChoice.UNKNOWN);
+        ListMenuChoice listMenuChoice = ListMenuChoice
+                .choiceFromInteger(input)
+                .orElse(ListMenuChoice.UNKNOWN);
 
         return switch (listMenuChoice) {
             case UNKNOWN -> new UnknownStorageEngine();
