@@ -8,26 +8,29 @@ import java.util.Scanner;
 
 import io.github.wilcywilson.crud.dto.StudentDto;
 import io.github.wilcywilson.crud.entrypoint.MenuCreator;
+import io.github.wilcywilson.crud.enums.ListMenuChoice;
+import io.github.wilcywilson.crud.enums.MainMenuChoice;
 import io.github.wilcywilson.crud.enums.Menu;
-import io.github.wilcywilson.crud.interfaces.CrudOperations;
+import io.github.wilcywilson.crud.interfaces.ListOperations;
+import io.github.wilcywilson.crud.interfaces.MainOperations;
 import io.github.wilcywilson.crud.utils.InputUtil;
 
-public class ListCrud implements CrudOperations {
+public class ListMain implements MainOperations {
     static List<StudentDto> studentDtoArrayList = new ArrayList<>();
     private final String additionalInfo;
 
-    public ListCrud(String additionalInfo) {
+    public ListMain(String additionalInfo) {
         this.additionalInfo = additionalInfo;
     }
 
     @Override
-    public void crudMainLoop(Scanner scanner) {
-        int ch;
+    public void storageEngineLoop(Scanner scanner) {
+        int input;
         do {
-            MenuCreator.createMenu(Menu.CRUD, additionalInfo);
-            ch = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
+            MenuCreator.createMenu(Menu.LIST_STORAGE_ENGINE, additionalInfo);
+            input = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
 
-            switch (ch) {
+            switch (input) {
                 case 1:
                     System.out.println();
                     insertList(scanner);
@@ -54,8 +57,56 @@ public class ListCrud implements CrudOperations {
                     System.out.println();
                     break;
             }
-        } while (ch != 0);
+        } while (input != 0);
     }
+
+    private static ListOperations selectList(int input) {
+        ListMenuChoice listMenuChoice = ListMenuChoice.choiceFromInteger(input).orElse(ListMenuChoice.UNKNOWN);
+
+        return switch (listMenuChoice) {
+            case UNKNOWN -> new UnknownStorageEngine();
+            case EXIT -> new ExitStorageEngine();
+            case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoice.name());
+            case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoice.name());
+        };
+    }
+
+//    public void storageEngineLoop(Scanner scanner) {
+//        int ch;
+//        do {
+//            MenuCreator.createMenu(Menu.CRUD, additionalInfo);
+//            ch = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
+//
+//            switch (ch) {
+//                case 1:
+//                    System.out.println();
+//                    insertList(scanner);
+//                    System.out.println();
+//                    break;
+//                case 2:
+//                    System.out.println();
+//                    displayList();
+//                    System.out.println();
+//                    break;
+//                case 3:
+//                    System.out.println();
+//                    searchList(scanner);
+//                    System.out.println();
+//                    break;
+//                case 4:
+//                    System.out.println();
+//                    deleteList(scanner);
+//                    System.out.println();
+//                    break;
+//                case 5:
+//                    System.out.println();
+//                    updateList(scanner);
+//                    System.out.println();
+//                    break;
+//            }
+//        } while (ch != 0);
+//    }
+
 
     public static void insertList(Scanner scanner) {
         int studentId = InputUtil.prompt(scanner, "Enter Student Id : ", Integer::parseInt);

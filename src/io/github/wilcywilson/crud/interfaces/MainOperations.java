@@ -2,7 +2,7 @@ package io.github.wilcywilson.crud.interfaces;
 
 import java.util.Scanner;
 
-public interface CrudOperations {
+public interface MainOperations {
     default String crudMenu() {
         return """
                 1.INSERT
@@ -16,5 +16,5 @@ public interface CrudOperations {
                 """;
     }
 
-    void crudMainLoop(Scanner scanner);
+    void storageEngineLoop(Scanner scanner);
 }

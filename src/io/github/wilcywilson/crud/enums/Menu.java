@@ -4,7 +4,7 @@ import io.github.wilcywilson.crud.interfaces.MenuChoice;
 
 public enum Menu {
     MAIN("Choose the Collection Framework", MainMenuChoice.values()),
-    CRUD("Choose the Storage Engine", CrudChoice.values());
+    LIST_STORAGE_ENGINE("Choose the Storage Engine", ListMenuChoice.values());
 
     private final String title;
     private final MenuChoice[] choices;
