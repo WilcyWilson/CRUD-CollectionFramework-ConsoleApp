@@ -2,23 +2,32 @@ package io.github.wilcywilson.crud.enums;
 
 import io.github.wilcywilson.crud.interfaces.MenuChoice;
 
+import javax.naming.Name;
+
 public enum CrudChoice implements MenuChoice {
-    INSERT(1),
-    DISPLAY(2),
-    SEARCH(3),
-    DELETE(4),
-    UPDATE(5),
-    EXIT(0);
+    INSERT(1, "Insert"),
+    DISPLAY(2, "Display"),
+    SEARCH(3, "Search"),
+    DELETE(4, "Delete"),
+    UPDATE(5, "Update"),
+    EXIT(0, "Exit");
 
     private final int value;
+    private final String name;
 
-    CrudChoice(int value) {
+    CrudChoice(int value, String name) {
         this.value = value;
+        this.name = name();
     }
 
     @Override
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
 }

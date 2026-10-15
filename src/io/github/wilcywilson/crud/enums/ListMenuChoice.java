@@ -5,15 +5,17 @@ import io.github.wilcywilson.crud.interfaces.MenuChoice;
 import java.util.Optional;
 
 public enum ListMenuChoice implements MenuChoice {
-    ARRAYLIST(1),
-    LINKED_LIST(2),
-    UNKNOWN(-1),
-    EXIT(0);
+    ARRAYLIST(1, "ArrayList"),
+    LINKED_LIST(2, "Linked List"),
+    UNKNOWN(-1, "Unknown"),
+    EXIT(0, "Exit");
 
     private final int value;
+    private final String name;
 
-    ListMenuChoice(int value) {
+    ListMenuChoice(int value, String name) {
         this.value = value;
+        this.name = name;
     }
 
     public static Optional<ListMenuChoice> choiceFromInteger(int input) {
@@ -28,5 +30,10 @@ public enum ListMenuChoice implements MenuChoice {
     @Override
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

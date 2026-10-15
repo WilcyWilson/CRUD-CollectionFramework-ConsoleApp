@@ -14,24 +14,9 @@ public class HashSetMain implements MainOperations {
     static HashSet<StudentDto> hs = new HashSet<>();
 
     @Override
-    public String crudMenu() {
-        return """
-                ------ HashSet Menu ------
-                1.INSERT
-                2.DISPLAY
-                3.SEARCH
-                4.DELETE
-                5.UPDATE
-                0.EXIT
-                
-                """;
-    }
-
-    @Override
     public void storageEngineLoop(Scanner scanner, PrintStream out) {
         int ch;
         do {
-            System.out.print(crudMenu());
             ch = InputUtil.prompt(scanner, out, "Enter Your Choice : ", Integer::parseInt);
 
             switch (ch) {

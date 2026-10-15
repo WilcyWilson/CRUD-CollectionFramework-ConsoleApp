@@ -16,7 +16,6 @@ public class HashMapMain implements MainOperations {
     public void storageEngineLoop(Scanner scanner, PrintStream out) {
         int ch;
         do {
-            System.out.print(crudMenu());
             ch = InputUtil.prompt(scanner, out, "Enter Your Choice : ",Integer::parseInt);
 
             switch (ch) {

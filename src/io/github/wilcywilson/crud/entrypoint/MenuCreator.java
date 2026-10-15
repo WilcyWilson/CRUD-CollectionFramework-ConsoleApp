@@ -13,7 +13,7 @@ public class MenuCreator {
                 options
                         .append(menuChoice.getValue())
                         .append(".")
-                        .append(menuChoice.name())
+                        .append(menuChoice.getName())
                         .append("\n");
             }
         }

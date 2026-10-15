@@ -33,11 +33,11 @@ public class Application {
                 case SET -> new HashSetMain();
             };
 
+            op.storageEngineLoop(scanner, out);
+
             if (op instanceof ExitMain) {
                 break;
             }
-
-            op.storageEngineLoop(scanner, out);
         }
     }
 }
