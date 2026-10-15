@@ -1,5 +1,6 @@
 package io.github.wilcywilson.crud.crudlogic;
 
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -12,24 +13,11 @@ public class HashMapMain implements MainOperations {
     static HashMap<Integer, StudentDto> al = new HashMap<>();
 
     @Override
-    public String crudMenu() {
-        return """
-                ------ HashMap Menu ------
-                1.INSERT
-                2.DISPLAY
-                3.SEARCH
-                4.DELETE
-                5.UPDATE
-                0.EXIT
-                """;
-    }
-
-    @Override
-    public void storageEngineLoop(Scanner scanner) {
+    public void storageEngineLoop(Scanner scanner, PrintStream out) {
         int ch;
         do {
             System.out.print(crudMenu());
-            ch = InputUtil.prompt(scanner, "Enter Your Choice : ",Integer::parseInt);
+            ch = InputUtil.prompt(scanner, out, "Enter Your Choice : ",Integer::parseInt);
 
             switch (ch) {
                 case 1:

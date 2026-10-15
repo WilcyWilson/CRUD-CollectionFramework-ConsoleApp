@@ -1,5 +1,6 @@
 package io.github.wilcywilson.crud.crudlogic;
 
+import java.io.PrintStream;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -27,11 +28,11 @@ public class HashSetMain implements MainOperations {
     }
 
     @Override
-    public void storageEngineLoop(Scanner scanner) {
+    public void storageEngineLoop(Scanner scanner, PrintStream out) {
         int ch;
         do {
             System.out.print(crudMenu());
-            ch = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
+            ch = InputUtil.prompt(scanner, out, "Enter Your Choice : ", Integer::parseInt);
 
             switch (ch) {
                 case 1:

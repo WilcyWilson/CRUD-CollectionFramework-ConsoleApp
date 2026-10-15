@@ -8,6 +8,7 @@ import io.github.wilcywilson.crud.interfaces.ListOperations;
 import io.github.wilcywilson.crud.interfaces.MainOperations;
 import io.github.wilcywilson.crud.utils.InputUtil;
 
+import java.io.PrintStream;
 import java.util.*;
 
 public class ListMain implements MainOperations {
@@ -19,11 +20,11 @@ public class ListMain implements MainOperations {
     }
 
     @Override
-    public void storageEngineLoop(Scanner scanner) {
+    public void storageEngineLoop(Scanner scanner, PrintStream out) {
         ListOperations listChoice;
         do {
-            MenuCreator.createMenu(Menu.LIST_STORAGE_ENGINE, additionalInfo);
-            int input = InputUtil.prompt(scanner, "Enter Your Choice : ", Integer::parseInt);
+            MenuCreator.createMenu(out, Menu.LIST_STORAGE_ENGINE, additionalInfo);
+            int input = InputUtil.prompt(scanner, out, "Enter Your Choice : ", Integer::parseInt);
             listChoice = selectList(input);
             listChoice.dataSchemaLoop(scanner);
         } while (!(listChoice instanceof ExitStorageEngine));
@@ -79,85 +80,85 @@ public class ListMain implements MainOperations {
 //    }
 
 
-    public static void insertList(Scanner scanner) {
-        int studentId = InputUtil.prompt(scanner, "Enter Student Id : ", Integer::parseInt);
-        String studentName = InputUtil.prompt(scanner, "Enter Student Name : ", s -> s);
-        System.out.print("Enter Student Faculty : ");
-        String studentFaculty = scanner.nextLine();
-        studentDtoArrayList.add(new StudentDto(studentId, studentName, studentFaculty));
-    }
-
-    public static void displayList() {
-        "-".repeat(20);
-        Iterator<StudentDto> itr = studentDtoArrayList.iterator();
-        while (itr.hasNext()) {
-            StudentDto student = itr.next();
-            System.out.println(student);
-        }
-        "-".repeat(20);
-    }
-
-    public static void searchList(Scanner scanner) {
-        boolean found = false;
-
-        int studentId = InputUtil.prompt(scanner, "Enter Student Id to Search : ", Integer::parseInt);
-        "-".repeat(20);
-        Iterator<StudentDto> itr = studentDtoArrayList.iterator();
-        while (itr.hasNext()) {
-            StudentDto student = itr.next();
-            if (student.studentId() == studentId) {
-                System.out.println("Record Found");
-                System.out.println(student);
-                found = true;
-            }
-        }
-        if (!found) {
-            System.out.println("Record Not Found");
-        }
-        "-".repeat(20);
-    }
-
-    public static void deleteList(Scanner scanner) {
-        boolean found = false;
-        int studentId = InputUtil.prompt(scanner, "Enter Student Id to Delete : ", Integer::parseInt);
-        "-".repeat(20);
-        Iterator<StudentDto> itr = studentDtoArrayList.iterator();
-        while (itr.hasNext()) {
-            StudentDto student = itr.next();
-            if (student.studentId() == studentId) {
-                itr.remove();
-                found = true;
-            }
-        }
-        if (!found) {
-            System.out.println("Record Not Found");
-        } else {
-            System.out.println("Record Found and Deleted Successfully");
-        }
-        "-".repeat(20);
-    }
-
-    public static void updateList(Scanner scanner) {
-        boolean found = false;
-        int studentId = InputUtil.prompt(scanner, "Enter Student Id to Update : ", Integer::parseInt);
-        "-".repeat(20);
-        ListIterator<StudentDto> itr = studentDtoArrayList.listIterator();
-        while (itr.hasNext()) {
-            StudentDto student = itr.next();
-            if (student.studentId() == studentId) {
-                System.out.println("Enter new Student Name :");
-                String studentName = scanner.nextLine();
-                System.out.println("Enter new Student Faculty :");
-                String studentFaculty = scanner.nextLine();
-                itr.set(new StudentDto(studentId, studentName, studentFaculty));
-                found = true;
-            }
-        }
-        if (!found) {
-            System.out.println("Record Not Found");
-        } else {
-            System.out.println("Record Updated Successfully");
-        }
-        "-".repeat(20);
-    }
+//    public static void insertList(Scanner scanner) {
+//        int studentId = InputUtil.prompt(scanner, "Enter Student Id : ", Integer::parseInt);
+//        String studentName = InputUtil.prompt(scanner, "Enter Student Name : ", s -> s);
+//        System.out.print("Enter Student Faculty : ");
+//        String studentFaculty = scanner.nextLine();
+//        studentDtoArrayList.add(new StudentDto(studentId, studentName, studentFaculty));
+//    }
+//
+//    public static void displayList() {
+//        "-".repeat(20);
+//        Iterator<StudentDto> itr = studentDtoArrayList.iterator();
+//        while (itr.hasNext()) {
+//            StudentDto student = itr.next();
+//            System.out.println(student);
+//        }
+//        "-".repeat(20);
+//    }
+//
+//    public static void searchList(Scanner scanner) {
+//        boolean found = false;
+//
+//        int studentId = InputUtil.prompt(scanner, "Enter Student Id to Search : ", Integer::parseInt);
+//        "-".repeat(20);
+//        Iterator<StudentDto> itr = studentDtoArrayList.iterator();
+//        while (itr.hasNext()) {
+//            StudentDto student = itr.next();
+//            if (student.studentId() == studentId) {
+//                System.out.println("Record Found");
+//                System.out.println(student);
+//                found = true;
+//            }
+//        }
+//        if (!found) {
+//            System.out.println("Record Not Found");
+//        }
+//        "-".repeat(20);
+//    }
+//
+//    public static void deleteList(Scanner scanner) {
+//        boolean found = false;
+//        int studentId = InputUtil.prompt(scanner, "Enter Student Id to Delete : ", Integer::parseInt);
+//        "-".repeat(20);
+//        Iterator<StudentDto> itr = studentDtoArrayList.iterator();
+//        while (itr.hasNext()) {
+//            StudentDto student = itr.next();
+//            if (student.studentId() == studentId) {
+//                itr.remove();
+//                found = true;
+//            }
+//        }
+//        if (!found) {
+//            System.out.println("Record Not Found");
+//        } else {
+//            System.out.println("Record Found and Deleted Successfully");
+//        }
+//        "-".repeat(20);
+//    }
+//
+//    public static void updateList(Scanner scanner) {
+//        boolean found = false;
+//        int studentId = InputUtil.prompt(scanner, "Enter Student Id to Update : ", Integer::parseInt);
+//        "-".repeat(20);
+//        ListIterator<StudentDto> itr = studentDtoArrayList.listIterator();
+//        while (itr.hasNext()) {
+//            StudentDto student = itr.next();
+//            if (student.studentId() == studentId) {
+//                System.out.println("Enter new Student Name :");
+//                String studentName = scanner.nextLine();
+//                System.out.println("Enter new Student Faculty :");
+//                String studentFaculty = scanner.nextLine();
+//                itr.set(new StudentDto(studentId, studentName, studentFaculty));
+//                found = true;
+//            }
+//        }
+//        if (!found) {
+//            System.out.println("Record Not Found");
+//        } else {
+//            System.out.println("Record Updated Successfully");
+//        }
+//        "-".repeat(20);
+//    }
 }

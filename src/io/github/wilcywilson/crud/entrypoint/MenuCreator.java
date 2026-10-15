@@ -3,8 +3,10 @@ package io.github.wilcywilson.crud.entrypoint;
 import io.github.wilcywilson.crud.enums.Menu;
 import io.github.wilcywilson.crud.interfaces.MenuChoice;
 
+import java.io.PrintStream;
+
 public class MenuCreator {
-    public static void createMenu(Menu menu, String... additionalInfos) {
+    public static void createMenu(PrintStream out, Menu menu, String... additionalInfos) {
         StringBuilder options = new StringBuilder();
         for (MenuChoice menuChoice : menu.getChoices()) {
             if (!(menuChoice.getValue() < 0)) {
@@ -16,11 +18,11 @@ public class MenuCreator {
             }
         }
         if (additionalInfos.length < 1) {
-            System.out.printf("""
+            out.printf("""
                     ------ %s ------
                     %s""", menu.getTitle(), options);
         } else {
-            System.out.printf("""
+            out.printf("""
                     ------ %s ------
                     %s""", menu.getTitle(additionalInfos), options);
         }
