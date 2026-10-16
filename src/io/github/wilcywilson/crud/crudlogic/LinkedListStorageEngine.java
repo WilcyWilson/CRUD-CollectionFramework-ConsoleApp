@@ -14,7 +14,7 @@ public class LinkedListStorageEngine implements ListOperations {
     }
 
     @Override
-    public void dataSchemaLoop(Scanner scanner, PrintStream out) {
+    public void run(Scanner scanner, PrintStream out) {
 
     }
 }

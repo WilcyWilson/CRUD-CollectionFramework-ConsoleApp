@@ -4,7 +4,7 @@ import io.github.wilcywilson.crud.crudlogic.*;
 import io.github.wilcywilson.crud.enums.MainMenuChoice;
 import io.github.wilcywilson.crud.enums.Menu;
 import io.github.wilcywilson.crud.enums.UiText;
-import io.github.wilcywilson.crud.interfaces.MainOperations;
+import io.github.wilcywilson.crud.interfaces.Operations;
 import io.github.wilcywilson.crud.utils.InputUtil;
 
 import java.io.PrintStream;
@@ -27,18 +27,18 @@ public class Application {
 
             String mainMenuChoiceName = mainMenuChoice.getName();
 
-            MainOperations mainOperations = switch (mainMenuChoice) {
-                case UNKNOWN -> new UnknownMain();
-                case EXIT -> new ExitMain();
+            Operations mainOperations = switch (mainMenuChoice) {
+                case UNKNOWN -> new InvalidSelection();
+                case EXIT -> new Exit();
                 case LIST -> new ListMain(mainMenuChoiceName);
                 case MAP -> new HashMapMain();
                 case QUEUE -> new QueueMain();
                 case SET -> new HashSetMain();
             };
 
-            mainOperations.storageEngineLoop(scanner, out);
+            mainOperations.run(scanner, out);
 
-            if (mainOperations instanceof ExitMain) {
+            if (mainOperations instanceof Exit) {
                 break;
             }
         }

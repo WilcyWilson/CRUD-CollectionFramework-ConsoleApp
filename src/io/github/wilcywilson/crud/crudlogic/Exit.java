@@ -1,14 +1,14 @@
 package io.github.wilcywilson.crud.crudlogic;
 
 import io.github.wilcywilson.crud.enums.UiText;
-import io.github.wilcywilson.crud.interfaces.MainOperations;
+import io.github.wilcywilson.crud.interfaces.Operations;
 
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class ExitMain implements MainOperations {
+public class Exit implements Operations {
     @Override
-    public void storageEngineLoop(Scanner scanner, PrintStream out) {
+    public void run(Scanner scanner, PrintStream out) {
         out.println(UiText.EXITING.getMessage());
     }
 }

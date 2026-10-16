@@ -14,7 +14,7 @@ public class HashMapMain implements MainOperations {
     static HashMap<Integer, StudentDto> al = new HashMap<>();
 
     @Override
-    public void storageEngineLoop(Scanner scanner, PrintStream out) {
+    public void run(Scanner scanner, PrintStream out) {
         int ch;
         do {
             ch = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);

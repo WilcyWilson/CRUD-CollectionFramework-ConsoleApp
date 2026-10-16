@@ -6,13 +6,13 @@ import io.github.wilcywilson.crud.enums.Menu;
 import io.github.wilcywilson.crud.enums.UiText;
 import io.github.wilcywilson.crud.interfaces.ListOperations;
 import io.github.wilcywilson.crud.interfaces.MainOperations;
+import io.github.wilcywilson.crud.interfaces.Operations;
 import io.github.wilcywilson.crud.utils.InputUtil;
 
 import java.io.PrintStream;
 import java.util.Scanner;
 
 public class ListMain implements MainOperations {
-//    static List<StudentDto> studentDtoArrayList = new ArrayList<>();
     private final String additionalInfo;
 
     public ListMain(String additionalInfo) {
@@ -20,7 +20,7 @@ public class ListMain implements MainOperations {
     }
 
     @Override
-    public void storageEngineLoop(Scanner scanner, PrintStream out) {
+    public void run(Scanner scanner, PrintStream out) {
         while (true) {
             MenuCreator.createMenu(out, Menu.LIST_STORAGE_ENGINE, additionalInfo);
             int input = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
@@ -30,16 +30,16 @@ public class ListMain implements MainOperations {
 
             String listMenuChoiceName = listMenuChoice.getName();
 
-            ListOperations listOperations = switch (listMenuChoice) {
-                case UNKNOWN -> new UnknownStorageEngine();
-                case EXIT -> new ExitStorageEngine();
+            Operations listOperations = switch (listMenuChoice) {
+                case UNKNOWN -> new InvalidSelection();
+                case EXIT -> new BackToMain();
                 case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoiceName);
                 case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoiceName);
             };
 
-            listOperations.dataSchemaLoop(scanner, out);
+            listOperations.run(scanner, out);
 
-            if (listOperations instanceof ExitStorageEngine) {
+            if (listOperations instanceof BackToMain) {
                 break;
             }
         }

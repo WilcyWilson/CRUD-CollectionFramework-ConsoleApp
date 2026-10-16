@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class QueueMain implements MainOperations {
     @Override
-    public void storageEngineLoop(Scanner scanner, PrintStream out) {
+    public void run(Scanner scanner, PrintStream out) {
 
     }
 }
