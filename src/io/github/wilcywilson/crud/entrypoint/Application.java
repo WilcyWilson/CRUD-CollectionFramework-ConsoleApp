@@ -27,7 +27,7 @@ public class Application {
             MainOperations op = switch (userMainMenuChoice) {
                 case UNKNOWN -> new UnknownMain();
                 case EXIT -> new ExitMain();
-                case LIST -> new ListMain(userMainMenuChoice.name());
+                case LIST -> new ListMain(userMainMenuChoice.getName());
                 case MAP -> new HashMapMain();
                 case QUEUE -> new QueueMain();
                 case SET -> new HashSetMain();
