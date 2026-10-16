@@ -25,10 +25,12 @@ public class Application {
             int input = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
             MainMenuChoice mainMenuChoice = MainMenuChoice.choiceFromInteger(input).orElse(MainMenuChoice.UNKNOWN);
 
+            String mainMenuChoiceName = mainMenuChoice.getName();
+
             MainOperations mainOperations = switch (mainMenuChoice) {
                 case UNKNOWN -> new UnknownMain();
                 case EXIT -> new ExitMain();
-                case LIST -> new ListMain(mainMenuChoice.getName());
+                case LIST -> new ListMain(mainMenuChoiceName);
                 case MAP -> new HashMapMain();
                 case QUEUE -> new QueueMain();
                 case SET -> new HashSetMain();

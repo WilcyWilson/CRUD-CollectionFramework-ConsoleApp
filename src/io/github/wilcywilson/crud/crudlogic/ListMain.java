@@ -1,6 +1,5 @@
 package io.github.wilcywilson.crud.crudlogic;
 
-import io.github.wilcywilson.crud.dto.StudentDto;
 import io.github.wilcywilson.crud.entrypoint.MenuCreator;
 import io.github.wilcywilson.crud.enums.ListMenuChoice;
 import io.github.wilcywilson.crud.enums.Menu;
@@ -10,7 +9,7 @@ import io.github.wilcywilson.crud.interfaces.MainOperations;
 import io.github.wilcywilson.crud.utils.InputUtil;
 
 import java.io.PrintStream;
-import java.util.*;
+import java.util.Scanner;
 
 public class ListMain implements MainOperations {
 //    static List<StudentDto> studentDtoArrayList = new ArrayList<>();
@@ -29,11 +28,13 @@ public class ListMain implements MainOperations {
                     .choiceFromInteger(input)
                     .orElse(ListMenuChoice.UNKNOWN);
 
+            String listMenuChoiceName = listMenuChoice.getName();
+
             ListOperations listOperations = switch (listMenuChoice) {
                 case UNKNOWN -> new UnknownStorageEngine();
                 case EXIT -> new ExitStorageEngine();
-                case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoice.getName());
-                case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoice.getName());
+                case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoiceName);
+                case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoiceName);
             };
 
             listOperations.dataSchemaLoop(scanner, out);
