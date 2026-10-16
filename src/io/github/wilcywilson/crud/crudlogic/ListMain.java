@@ -13,7 +13,7 @@ import java.io.PrintStream;
 import java.util.*;
 
 public class ListMain implements MainOperations {
-    static List<StudentDto> studentDtoArrayList = new ArrayList<>();
+//    static List<StudentDto> studentDtoArrayList = new ArrayList<>();
     private final String additionalInfo;
 
     public ListMain(String additionalInfo) {
@@ -22,26 +22,26 @@ public class ListMain implements MainOperations {
 
     @Override
     public void storageEngineLoop(Scanner scanner, PrintStream out) {
-        ListOperations listChoice;
-        do {
+        while (true) {
             MenuCreator.createMenu(out, Menu.LIST_STORAGE_ENGINE, additionalInfo);
             int input = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
-            listChoice = selectList(input);
-            listChoice.dataSchemaLoop(scanner, out);
-        } while (!(listChoice instanceof ExitStorageEngine));
-    }
+            ListMenuChoice listMenuChoice = ListMenuChoice
+                    .choiceFromInteger(input)
+                    .orElse(ListMenuChoice.UNKNOWN);
 
-    private static ListOperations selectList(int input) {
-        ListMenuChoice listMenuChoice = ListMenuChoice
-                .choiceFromInteger(input)
-                .orElse(ListMenuChoice.UNKNOWN);
+            ListOperations listOperations = switch (listMenuChoice) {
+                case UNKNOWN -> new UnknownStorageEngine();
+                case EXIT -> new ExitStorageEngine();
+                case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoice.getName());
+                case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoice.getName());
+            };
 
-        return switch (listMenuChoice) {
-            case UNKNOWN -> new UnknownStorageEngine();
-            case EXIT -> new ExitStorageEngine();
-            case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoice.name());
-            case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoice.name());
-        };
+            listOperations.dataSchemaLoop(scanner, out);
+
+            if (listOperations instanceof ExitStorageEngine) {
+                break;
+            }
+        }
     }
 
 //    public void storageEngineLoop(Scanner scanner) {
