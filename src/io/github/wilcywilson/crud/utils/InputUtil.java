@@ -1,5 +1,7 @@
 package io.github.wilcywilson.crud.utils;
 
+import io.github.wilcywilson.crud.enums.UiText;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.function.Function;
@@ -17,7 +19,7 @@ public class InputUtil {
                 out.println();
                 return parser.apply(line);
             } catch (RuntimeException e) {
-                out.println("Invalid Input. Please try again");
+                out.println(UiText.INVALID_INPUT.getMessage());
             }
         }
     }

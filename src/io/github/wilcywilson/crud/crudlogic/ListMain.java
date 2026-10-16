@@ -4,6 +4,7 @@ import io.github.wilcywilson.crud.dto.StudentDto;
 import io.github.wilcywilson.crud.entrypoint.MenuCreator;
 import io.github.wilcywilson.crud.enums.ListMenuChoice;
 import io.github.wilcywilson.crud.enums.Menu;
+import io.github.wilcywilson.crud.enums.UiText;
 import io.github.wilcywilson.crud.interfaces.ListOperations;
 import io.github.wilcywilson.crud.interfaces.MainOperations;
 import io.github.wilcywilson.crud.utils.InputUtil;
@@ -24,9 +25,9 @@ public class ListMain implements MainOperations {
         ListOperations listChoice;
         do {
             MenuCreator.createMenu(out, Menu.LIST_STORAGE_ENGINE, additionalInfo);
-            int input = InputUtil.prompt(scanner, out, "Enter Your Choice : ", Integer::parseInt);
+            int input = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
             listChoice = selectList(input);
-            listChoice.dataSchemaLoop(scanner);
+            listChoice.dataSchemaLoop(scanner, out);
         } while (!(listChoice instanceof ExitStorageEngine));
     }
 

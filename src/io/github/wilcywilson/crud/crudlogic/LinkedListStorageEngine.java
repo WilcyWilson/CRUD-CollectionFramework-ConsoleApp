@@ -2,6 +2,7 @@ package io.github.wilcywilson.crud.crudlogic;
 
 import io.github.wilcywilson.crud.interfaces.ListOperations;
 
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class LinkedListStorageEngine implements ListOperations {
@@ -13,7 +14,7 @@ public class LinkedListStorageEngine implements ListOperations {
     }
 
     @Override
-    public void dataSchemaLoop(Scanner scanner) {
+    public void dataSchemaLoop(Scanner scanner, PrintStream out) {
 
     }
 }

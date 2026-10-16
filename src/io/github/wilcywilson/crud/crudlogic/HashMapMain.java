@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import io.github.wilcywilson.crud.dto.StudentDto;
+import io.github.wilcywilson.crud.enums.UiText;
 import io.github.wilcywilson.crud.interfaces.MainOperations;
 import io.github.wilcywilson.crud.utils.InputUtil;
 
@@ -16,7 +17,7 @@ public class HashMapMain implements MainOperations {
     public void storageEngineLoop(Scanner scanner, PrintStream out) {
         int ch;
         do {
-            ch = InputUtil.prompt(scanner, out, "Enter Your Choice : ",Integer::parseInt);
+            ch = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
 
             switch (ch) {
                 case 1:
