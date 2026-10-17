@@ -1,6 +1,6 @@
 package io.github.wilcywilson.crud;
 
-import io.github.wilcywilson.crud.entrypoint.Application;
+import io.github.wilcywilson.crud.ui.Application;
 
 import java.util.Scanner;
 

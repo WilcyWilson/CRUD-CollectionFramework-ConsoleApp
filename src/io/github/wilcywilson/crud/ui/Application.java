@@ -1,12 +1,10 @@
-package io.github.wilcywilson.crud.entrypoint;
+package io.github.wilcywilson.crud.ui;
 
 import io.github.wilcywilson.crud.crudlogic.*;
 import io.github.wilcywilson.crud.enums.LoopStatus;
 import io.github.wilcywilson.crud.enums.MainMenuChoice;
 import io.github.wilcywilson.crud.enums.Menu;
-import io.github.wilcywilson.crud.enums.UiText;
 import io.github.wilcywilson.crud.interfaces.Operations;
-import io.github.wilcywilson.crud.utils.InputUtil;
 
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -47,7 +45,7 @@ public class Application {
             };
 
             if (mainOperations.run(scanner, out) == LoopStatus.EXIT) {
-                break;
+                return;
             }
         }
     }

@@ -1,4 +1,4 @@
-package io.github.wilcywilson.crud.entrypoint;
+package io.github.wilcywilson.crud.ui;
 
 import io.github.wilcywilson.crud.enums.Menu;
 import io.github.wilcywilson.crud.interfaces.MenuChoice;

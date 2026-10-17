@@ -1,6 +1,4 @@
-package io.github.wilcywilson.crud.utils;
-
-import io.github.wilcywilson.crud.enums.UiText;
+package io.github.wilcywilson.crud.ui;
 
 import java.io.PrintStream;
 import java.util.Scanner;

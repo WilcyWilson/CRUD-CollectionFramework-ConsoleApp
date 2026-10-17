@@ -1,4 +1,4 @@
-package io.github.wilcywilson.crud.enums;
+package io.github.wilcywilson.crud.ui;
 
 public enum UiText {
     EXITING("Exiting....."),

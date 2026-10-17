@@ -1,13 +1,13 @@
 package io.github.wilcywilson.crud.crudlogic;
 
-import io.github.wilcywilson.crud.entrypoint.MenuCreator;
+import io.github.wilcywilson.crud.ui.MenuCreator;
 import io.github.wilcywilson.crud.enums.ListMenuChoice;
 import io.github.wilcywilson.crud.enums.LoopStatus;
 import io.github.wilcywilson.crud.enums.Menu;
-import io.github.wilcywilson.crud.enums.UiText;
+import io.github.wilcywilson.crud.ui.UiText;
 import io.github.wilcywilson.crud.interfaces.MainOperations;
 import io.github.wilcywilson.crud.interfaces.Operations;
-import io.github.wilcywilson.crud.utils.InputUtil;
+import io.github.wilcywilson.crud.ui.InputUtil;
 
 import java.io.PrintStream;
 import java.util.Scanner;

@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 import io.github.wilcywilson.crud.dto.StudentDto;
 import io.github.wilcywilson.crud.enums.LoopStatus;
-import io.github.wilcywilson.crud.enums.UiText;
+import io.github.wilcywilson.crud.ui.UiText;
 import io.github.wilcywilson.crud.interfaces.MainOperations;
-import io.github.wilcywilson.crud.utils.InputUtil;
+import io.github.wilcywilson.crud.ui.InputUtil;
 
 public class HashMapMain implements MainOperations {
     static HashMap<Integer, StudentDto> al = new HashMap<>();

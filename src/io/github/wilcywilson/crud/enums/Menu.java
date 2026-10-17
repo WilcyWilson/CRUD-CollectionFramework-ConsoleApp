@@ -1,6 +1,7 @@
 package io.github.wilcywilson.crud.enums;
 
 import io.github.wilcywilson.crud.interfaces.MenuChoice;
+import io.github.wilcywilson.crud.ui.UiText;
 
 public enum Menu {
     MAIN(UiText.CHOOSE_COLLECTION_FRAMEWORK.getMessage(), MainMenuChoice.values()),
