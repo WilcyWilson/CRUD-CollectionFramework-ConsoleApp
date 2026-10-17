@@ -1,8 +1,6 @@
-package io.github.wilcywilson.crud.enums;
+package io.github.wilcywilson.crud.domain.enums;
 
-import io.github.wilcywilson.crud.interfaces.MenuChoice;
-
-import javax.naming.Name;
+import io.github.wilcywilson.crud.shared.interfaces.MenuChoice;
 
 public enum CrudChoice implements MenuChoice {
     INSERT(1, "Insert"),

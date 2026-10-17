@@ -1,7 +1,4 @@
-package io.github.wilcywilson.crud.interfaces;
-
-import java.io.PrintStream;
-import java.util.Scanner;
+package io.github.wilcywilson.crud.shared.interfaces;
 
 public interface MainOperations extends Operations {
 

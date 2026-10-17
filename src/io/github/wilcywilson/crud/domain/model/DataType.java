@@ -1,4 +1,6 @@
-package io.github.wilcywilson.crud.model;
+package io.github.wilcywilson.crud.domain.model;
+
+import io.github.wilcywilson.crud.domain.exception.InvalidValueException;
 
 import java.util.function.Function;
 

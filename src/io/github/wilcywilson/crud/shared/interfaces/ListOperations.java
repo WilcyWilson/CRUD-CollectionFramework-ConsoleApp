@@ -1,6 +1,6 @@
-package io.github.wilcywilson.crud.interfaces;
+package io.github.wilcywilson.crud.shared.interfaces;
 
-import io.github.wilcywilson.crud.enums.LoopStatus;
+import io.github.wilcywilson.crud.domain.enums.LoopStatus;
 
 import java.io.PrintStream;
 import java.util.Scanner;

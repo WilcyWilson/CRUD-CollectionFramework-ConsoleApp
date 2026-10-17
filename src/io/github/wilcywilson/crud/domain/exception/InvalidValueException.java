@@ -1,4 +1,4 @@
-package io.github.wilcywilson.crud.model;
+package io.github.wilcywilson.crud.domain.exception;
 
 import java.io.Serial;
 

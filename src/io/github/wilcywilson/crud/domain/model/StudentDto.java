@@ -1,4 +1,4 @@
-package io.github.wilcywilson.crud.dto;
+package io.github.wilcywilson.crud.domain.model;
 
 public record StudentDto(int studentId, String studentName, String studentFaculty) {
 

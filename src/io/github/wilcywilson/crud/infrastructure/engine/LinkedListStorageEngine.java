@@ -1,7 +1,7 @@
-package io.github.wilcywilson.crud.crudlogic;
+package io.github.wilcywilson.crud.infrastructure.engine;
 
-import io.github.wilcywilson.crud.enums.LoopStatus;
-import io.github.wilcywilson.crud.interfaces.ListOperations;
+import io.github.wilcywilson.crud.domain.enums.LoopStatus;
+import io.github.wilcywilson.crud.shared.interfaces.ListOperations;
 
 import java.io.PrintStream;
 import java.util.Scanner;

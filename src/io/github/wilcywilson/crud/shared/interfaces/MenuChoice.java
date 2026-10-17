@@ -1,4 +1,4 @@
-package io.github.wilcywilson.crud.interfaces;
+package io.github.wilcywilson.crud.shared.interfaces;
 
 public interface MenuChoice {
     int getValue();
