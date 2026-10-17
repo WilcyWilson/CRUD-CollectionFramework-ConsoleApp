@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import io.github.wilcywilson.crud.dto.StudentDto;
+import io.github.wilcywilson.crud.enums.LoopStatus;
 import io.github.wilcywilson.crud.enums.UiText;
 import io.github.wilcywilson.crud.interfaces.MainOperations;
 import io.github.wilcywilson.crud.utils.InputUtil;
@@ -15,7 +16,7 @@ public class HashSetMain implements MainOperations {
     static HashSet<StudentDto> hs = new HashSet<>();
 
     @Override
-    public void run(Scanner scanner, PrintStream out) {
+    public LoopStatus run(Scanner scanner, PrintStream out) {
         int ch;
         do {
             ch = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
@@ -48,6 +49,7 @@ public class HashSetMain implements MainOperations {
                     break;
             }
         } while (ch != 0);
+        return LoopStatus.EXIT;
     }
 
     public static void insertHashSet() {

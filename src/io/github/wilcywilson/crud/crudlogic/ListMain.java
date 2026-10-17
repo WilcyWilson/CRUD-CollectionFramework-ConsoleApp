@@ -2,9 +2,9 @@ package io.github.wilcywilson.crud.crudlogic;
 
 import io.github.wilcywilson.crud.entrypoint.MenuCreator;
 import io.github.wilcywilson.crud.enums.ListMenuChoice;
+import io.github.wilcywilson.crud.enums.LoopStatus;
 import io.github.wilcywilson.crud.enums.Menu;
 import io.github.wilcywilson.crud.enums.UiText;
-import io.github.wilcywilson.crud.interfaces.ListOperations;
 import io.github.wilcywilson.crud.interfaces.MainOperations;
 import io.github.wilcywilson.crud.interfaces.Operations;
 import io.github.wilcywilson.crud.utils.InputUtil;
@@ -20,27 +20,34 @@ public class ListMain implements MainOperations {
     }
 
     @Override
-    public void run(Scanner scanner, PrintStream out) {
+    public LoopStatus run(Scanner scanner, PrintStream out) {
         while (true) {
             MenuCreator.createMenu(out, Menu.LIST_STORAGE_ENGINE, additionalInfo);
+
             int input = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
-            ListMenuChoice listMenuChoice = ListMenuChoice
-                    .choiceFromInteger(input)
-                    .orElse(ListMenuChoice.UNKNOWN);
+
+            ListMenuChoice listMenuChoice = ListMenuChoice.choiceFromInteger(input).orElse(ListMenuChoice.UNKNOWN);
+
+            if (listMenuChoice == ListMenuChoice.EXIT) {
+                out.println(UiText.BACK_TO_MAIN.getMessage());
+                return LoopStatus.CONTINUE;
+            }
+
+            if (listMenuChoice == ListMenuChoice.UNKNOWN) {
+                out.println(UiText.INVALID_SELECTION.getMessage());
+                continue;
+            }
 
             String listMenuChoiceName = listMenuChoice.getName();
 
             Operations listOperations = switch (listMenuChoice) {
-                case UNKNOWN -> new InvalidSelection();
-                case EXIT -> new BackToMain();
                 case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoiceName);
                 case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoiceName);
+                default -> throw new IllegalStateException("Unreachable" + listMenuChoiceName);
             };
 
-            listOperations.run(scanner, out);
-
-            if (listOperations instanceof BackToMain) {
-                break;
+            if (listOperations.run(scanner, out) == LoopStatus.EXIT) {
+                return LoopStatus.EXIT;
             }
         }
     }

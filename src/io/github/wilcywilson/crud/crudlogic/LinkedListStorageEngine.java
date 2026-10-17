@@ -1,5 +1,6 @@
 package io.github.wilcywilson.crud.crudlogic;
 
+import io.github.wilcywilson.crud.enums.LoopStatus;
 import io.github.wilcywilson.crud.interfaces.ListOperations;
 
 import java.io.PrintStream;
@@ -14,7 +15,7 @@ public class LinkedListStorageEngine implements ListOperations {
     }
 
     @Override
-    public void run(Scanner scanner, PrintStream out) {
-
+    public LoopStatus run(Scanner scanner, PrintStream out) {
+        return LoopStatus.EXIT;
     }
 }

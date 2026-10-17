@@ -1,6 +1,7 @@
 package io.github.wilcywilson.crud.entrypoint;
 
 import io.github.wilcywilson.crud.crudlogic.*;
+import io.github.wilcywilson.crud.enums.LoopStatus;
 import io.github.wilcywilson.crud.enums.MainMenuChoice;
 import io.github.wilcywilson.crud.enums.Menu;
 import io.github.wilcywilson.crud.enums.UiText;
@@ -25,20 +26,27 @@ public class Application {
             int input = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
             MainMenuChoice mainMenuChoice = MainMenuChoice.choiceFromInteger(input).orElse(MainMenuChoice.UNKNOWN);
 
+            if (mainMenuChoice == MainMenuChoice.EXIT){
+                out.println(UiText.EXITING.getMessage());
+                return;
+            }
+
+            if (mainMenuChoice == MainMenuChoice.UNKNOWN){
+                out.println(UiText.INVALID_SELECTION.getMessage());
+                continue;
+            }
+
             String mainMenuChoiceName = mainMenuChoice.getName();
 
             Operations mainOperations = switch (mainMenuChoice) {
-                case UNKNOWN -> new InvalidSelection();
-                case EXIT -> new Exit();
                 case LIST -> new ListMain(mainMenuChoiceName);
                 case MAP -> new HashMapMain();
                 case QUEUE -> new QueueMain();
                 case SET -> new HashSetMain();
+                default -> throw new IllegalArgumentException("Unreachable" + mainMenuChoice);
             };
 
-            mainOperations.run(scanner, out);
-
-            if (mainOperations instanceof Exit) {
+            if (mainOperations.run(scanner, out) == LoopStatus.EXIT) {
                 break;
             }
         }
