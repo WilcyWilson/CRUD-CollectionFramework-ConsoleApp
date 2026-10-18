@@ -25,16 +25,14 @@ public class Application {
         while (true) {
             MenuCreator.createMenu(out, Menu.MAIN);
             int input = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
-            MainMenuChoice mainMenuChoice = MainMenuChoice
-                    .choiceFromInteger(input)
-                    .orElse(MainMenuChoice.UNKNOWN);
+            MainMenuChoice mainMenuChoice = MainMenuChoice.choiceFromInteger(input).orElse(MainMenuChoice.UNKNOWN);
 
-            if (mainMenuChoice == MainMenuChoice.EXIT) {
+            if (mainMenuChoice == MainMenuChoice.EXIT){
                 out.println(UiText.EXITING.getMessage());
                 return;
             }
 
-            if (mainMenuChoice == MainMenuChoice.UNKNOWN) {
+            if (mainMenuChoice == MainMenuChoice.UNKNOWN){
                 out.println(UiText.INVALID_SELECTION.getMessage());
                 continue;
             }
@@ -42,11 +40,7 @@ public class Application {
             String mainMenuChoiceName = mainMenuChoice.getName();
 
             Operations mainOperations = switch (mainMenuChoice) {
-                case LIST -> {
-                    ListMain listMain = new ListMain();
-                    listMain.setAdditionalInfo(mainMenuChoiceName);
-                    yield listMain;
-                }
+                case LIST -> new ListMain(mainMenuChoiceName);
                 case MAP -> new HashMapMain();
                 case QUEUE -> new QueueMain();
                 case SET -> new HashSetMain();

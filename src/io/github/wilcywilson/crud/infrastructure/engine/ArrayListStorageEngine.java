@@ -7,11 +7,7 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class ArrayListStorageEngine implements ListOperations {
-    private String additionalInfo;
-
-    public ArrayListStorageEngine() {
-        additionalInfo = "";
-    }
+    private final String additionalInfo;
 
     public ArrayListStorageEngine(String additionalInfo) {
         this.additionalInfo = additionalInfo;
@@ -20,15 +16,5 @@ public class ArrayListStorageEngine implements ListOperations {
     @Override
     public LoopStatus run(Scanner scanner, PrintStream out) {
         return LoopStatus.EXIT;
-    }
-
-    @Override
-    public String getAdditionalInfo() {
-        return additionalInfo;
-    }
-
-    @Override
-    public void setAdditionalInfo(String additionalInfo) {
-        this.additionalInfo = additionalInfo;
     }
 }

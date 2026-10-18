@@ -11,14 +11,4 @@ public class QueueMain implements MainOperations {
     public LoopStatus run(Scanner scanner, PrintStream out) {
         return LoopStatus.EXIT;
     }
-
-    @Override
-    public String getAdditionalInfo() {
-        return "";
-    }
-
-    @Override
-    public void setAdditionalInfo(String additionalInfo) {
-
-    }
 }
