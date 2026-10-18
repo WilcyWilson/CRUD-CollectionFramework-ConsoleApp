@@ -52,6 +52,16 @@ public class HashSetMain implements MainOperations {
         return LoopStatus.EXIT;
     }
 
+    @Override
+    public String getAdditionalInfo() {
+        return "";
+    }
+
+    @Override
+    public void setAdditionalInfo(String additionalInfo) {
+
+    }
+
     public static void insertHashSet() {
         Scanner sId = new Scanner(System.in);
         Scanner sName = new Scanner(System.in);

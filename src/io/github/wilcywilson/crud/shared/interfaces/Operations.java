@@ -7,4 +7,8 @@ import java.util.Scanner;
 
 public interface Operations {
     LoopStatus run(Scanner scanner, PrintStream out);
+
+    String getAdditionalInfo();
+
+    void setAdditionalInfo(String additionalInfo);
 }

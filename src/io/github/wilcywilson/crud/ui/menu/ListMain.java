@@ -15,20 +15,22 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class ListMain implements MainOperations {
-    private final String additionalInfo;
+    private String additionalInfo;
 
-    public ListMain(String additionalInfo) {
-        this.additionalInfo = additionalInfo;
+    public ListMain() {
+        additionalInfo = "";
     }
 
     @Override
     public LoopStatus run(Scanner scanner, PrintStream out) {
         while (true) {
-            MenuCreator.createMenu(out, Menu.LIST_STORAGE_ENGINE, additionalInfo);
+            MenuCreator.createMenu(out, Menu.LIST_STORAGE_ENGINE, getAdditionalInfo());
 
             int input = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
 
-            ListMenuChoice listMenuChoice = ListMenuChoice.choiceFromInteger(input).orElse(ListMenuChoice.UNKNOWN);
+            ListMenuChoice listMenuChoice = ListMenuChoice
+                    .choiceFromInteger(input)
+                    .orElse(ListMenuChoice.UNKNOWN);
 
             if (listMenuChoice == ListMenuChoice.EXIT) {
                 out.println(UiText.BACK_TO_MAIN.getMessage());
@@ -52,6 +54,16 @@ public class ListMain implements MainOperations {
                 return LoopStatus.EXIT;
             }
         }
+    }
+
+    @Override
+    public String getAdditionalInfo() {
+        return additionalInfo;
+    }
+
+    @Override
+    public void setAdditionalInfo(String additionalInfo) {
+        this.additionalInfo = additionalInfo;
     }
 
 //    public void storageEngineLoop(Scanner scanner) {
