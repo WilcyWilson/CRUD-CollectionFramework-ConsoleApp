@@ -28,7 +28,9 @@ public class ListMain implements MainOperations {
 
             int input = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
 
-            ListMenuChoice listMenuChoice = ListMenuChoice.choiceFromInteger(input).orElse(ListMenuChoice.UNKNOWN);
+            ListMenuChoice listMenuChoice = ListMenuChoice
+                    .choiceFromInteger(input)
+                    .orElse(ListMenuChoice.UNKNOWN);
 
             if (listMenuChoice == ListMenuChoice.EXIT) {
                 out.println(UiText.BACK_TO_MAIN.getMessage());
@@ -40,18 +42,20 @@ public class ListMain implements MainOperations {
                 continue;
             }
 
-            String listMenuChoiceName = listMenuChoice.getName();
-
-            Operations listOperations = switch (listMenuChoice) {
-                case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoiceName);
-                case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoiceName);
-                default -> throw new IllegalStateException("Unreachable" + listMenuChoiceName);
-            };
+            Operations listOperations = createListOperation(listMenuChoice);
 
             if (listOperations.run(scanner, out) == LoopStatus.EXIT) {
                 return LoopStatus.EXIT;
             }
         }
+    }
+
+    private Operations createListOperation(ListMenuChoice listMenuChoice) {
+        return switch (listMenuChoice) {
+            case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoice.getName());
+            case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoice.getName());
+            default -> throw new IllegalStateException("Unreachable" + listMenuChoice);
+        };
     }
 
 //    public void storageEngineLoop(Scanner scanner) {

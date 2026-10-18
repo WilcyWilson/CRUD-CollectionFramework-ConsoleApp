@@ -25,31 +25,35 @@ public class Application {
         while (true) {
             MenuCreator.createMenu(out, Menu.MAIN);
             int input = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
-            MainMenuChoice mainMenuChoice = MainMenuChoice.choiceFromInteger(input).orElse(MainMenuChoice.UNKNOWN);
+            MainMenuChoice mainMenuChoice = MainMenuChoice
+                    .choiceFromInteger(input)
+                    .orElse(MainMenuChoice.UNKNOWN);
 
-            if (mainMenuChoice == MainMenuChoice.EXIT){
+            if (mainMenuChoice == MainMenuChoice.EXIT) {
                 out.println(UiText.EXITING.getMessage());
                 return;
             }
 
-            if (mainMenuChoice == MainMenuChoice.UNKNOWN){
+            if (mainMenuChoice == MainMenuChoice.UNKNOWN) {
                 out.println(UiText.INVALID_SELECTION.getMessage());
                 continue;
             }
 
-            String mainMenuChoiceName = mainMenuChoice.getName();
-
-            Operations mainOperations = switch (mainMenuChoice) {
-                case LIST -> new ListMain(mainMenuChoiceName);
-                case MAP -> new HashMapMain();
-                case QUEUE -> new QueueMain();
-                case SET -> new HashSetMain();
-                default -> throw new IllegalArgumentException("Unreachable" + mainMenuChoice);
-            };
+            Operations mainOperations = createMainOperation(mainMenuChoice);
 
             if (mainOperations.run(scanner, out) == LoopStatus.EXIT) {
                 return;
             }
         }
+    }
+
+    private Operations createMainOperation(MainMenuChoice mainMenuChoice) {
+        return switch (mainMenuChoice) {
+            case LIST -> new ListMain(mainMenuChoice.getName());
+            case MAP -> new HashMapMain();
+            case QUEUE -> new QueueMain();
+            case SET -> new HashSetMain();
+            default -> throw new IllegalArgumentException("Unreachable" + mainMenuChoice);
+        };
     }
 }
