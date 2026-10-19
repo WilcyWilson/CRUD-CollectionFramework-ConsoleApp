@@ -2,6 +2,7 @@ package io.github.wilcywilson.crud.ui.menu;
 
 import io.github.wilcywilson.crud.infrastructure.engine.ArrayListStorageEngine;
 import io.github.wilcywilson.crud.infrastructure.engine.LinkedListStorageEngine;
+import io.github.wilcywilson.crud.shared.menu.MenuChoiceUtil;
 import io.github.wilcywilson.crud.ui.MenuCreator;
 import io.github.wilcywilson.crud.domain.enums.ListMenuChoice;
 import io.github.wilcywilson.crud.domain.enums.LoopStatus;
@@ -28,9 +29,8 @@ public class ListMain implements MainOperations {
 
             int input = ConsolePrompt.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
 
-            ListMenuChoice listMenuChoice = ListMenuChoice
-                    .choiceFromInteger(input)
-                    .orElse(ListMenuChoice.INVALID_SELECTION);
+            ListMenuChoice listMenuChoice = MenuChoiceUtil.fromCode(ListMenuChoice.class, input)
+                                                          .orElse(ListMenuChoice.INVALID_SELECTION);
 
             if (listMenuChoice == ListMenuChoice.EXIT) {
                 out.println(UiText.BACK_TO_MAIN.getMessage());

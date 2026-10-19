@@ -2,8 +2,6 @@ package io.github.wilcywilson.crud.domain.enums;
 
 import io.github.wilcywilson.crud.shared.menu.MenuChoice;
 
-import java.util.Optional;
-
 public enum MainMenuChoice implements MenuChoice {
     LIST(1, "List"),
     SET(2, "Set"),
@@ -12,30 +10,20 @@ public enum MainMenuChoice implements MenuChoice {
     INVALID_SELECTION(-1, "Invalid Selection"),
     EXIT(0, "Exit");
 
-    private final int value;
-    private final String name;
+    private final int code;
+    private final String displayName;
 
-    MainMenuChoice(int value, String name) {
-        this.value = value;
-        this.name = name;
-    }
-
-    public static Optional<MainMenuChoice> choiceFromInteger(int input) {
-        for (MainMenuChoice mainMenuChoice : MainMenuChoice.values()) {
-            if (mainMenuChoice.value == input) {
-                return Optional.of(mainMenuChoice);
-            }
-        }
-        return Optional.empty();
+    MainMenuChoice(int code, String displayName) {
+        this.code = code;
+        this.displayName = displayName;
     }
 
     @Override
     public int getCode() {
-        return value;
+        return code;
     }
 
-
     public String getDisplayName() {
-        return name;
+        return displayName;
     }
 }
