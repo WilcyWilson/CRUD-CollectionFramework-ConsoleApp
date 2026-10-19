@@ -5,7 +5,8 @@ import io.github.wilcywilson.crud.ui.UiText;
 
 public enum Menu {
     MAIN(UiText.CHOOSE_COLLECTION_FRAMEWORK.getMessage(), MainMenuChoice.values()),
-    LIST_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), ListMenuChoice.values());
+    LIST_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), ListMenuChoice.values()),
+    MAP_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), MapMenuChoice.values());
 
     private final String title;
     private final MenuChoice[] choices;

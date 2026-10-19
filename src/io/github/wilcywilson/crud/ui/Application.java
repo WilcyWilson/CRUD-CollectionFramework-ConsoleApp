@@ -3,6 +3,7 @@ package io.github.wilcywilson.crud.ui;
 import io.github.wilcywilson.crud.domain.enums.LoopStatus;
 import io.github.wilcywilson.crud.domain.enums.MainMenuChoice;
 import io.github.wilcywilson.crud.domain.enums.Menu;
+import io.github.wilcywilson.crud.shared.menu.MainOperations;
 import io.github.wilcywilson.crud.shared.menu.Operations;
 import io.github.wilcywilson.crud.shared.menu.MenuChoiceUtil;
 import io.github.wilcywilson.crud.ui.menu.MapMain;
@@ -40,7 +41,7 @@ public class Application {
                 continue;
             }
 
-            Operations mainOperations = createMainOperation(mainMenuChoice);
+            MainOperations mainOperations = createMainOperation(mainMenuChoice);
 
             if (mainOperations.run(scanner, out) == LoopStatus.EXIT) {
                 return;
@@ -48,10 +49,10 @@ public class Application {
         }
     }
 
-    private Operations createMainOperation(MainMenuChoice mainMenuChoice) {
+    private MainOperations createMainOperation(MainMenuChoice mainMenuChoice) {
         return switch (mainMenuChoice) {
             case LIST -> new ListMain(mainMenuChoice.getDisplayName());
-            case MAP -> new MapMain();
+            case MAP -> new MapMain(mainMenuChoice.getDisplayName());
             case QUEUE -> new QueueMain();
             case SET -> new SetMain();
             default -> throw new IllegalArgumentException("Unreachable" + mainMenuChoice);

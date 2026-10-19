@@ -2,6 +2,7 @@ package io.github.wilcywilson.crud.ui.menu;
 
 import io.github.wilcywilson.crud.infrastructure.engine.ArrayListStorageEngine;
 import io.github.wilcywilson.crud.infrastructure.engine.LinkedListStorageEngine;
+import io.github.wilcywilson.crud.shared.menu.ListOperations;
 import io.github.wilcywilson.crud.shared.menu.MenuChoiceUtil;
 import io.github.wilcywilson.crud.ui.MenuCreator;
 import io.github.wilcywilson.crud.domain.enums.ListMenuChoice;
@@ -42,7 +43,7 @@ public class ListMain implements MainOperations {
                 continue;
             }
 
-            Operations listOperations = createListOperation(listMenuChoice);
+            ListOperations listOperations = createListOperation(listMenuChoice);
 
             if (listOperations.run(scanner, out) == LoopStatus.EXIT) {
                 return LoopStatus.EXIT;
@@ -50,7 +51,7 @@ public class ListMain implements MainOperations {
         }
     }
 
-    private Operations createListOperation(ListMenuChoice listMenuChoice) {
+    private ListOperations createListOperation(ListMenuChoice listMenuChoice) {
         return switch (listMenuChoice) {
             case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoice.getDisplayName());
             case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoice.getDisplayName());
