@@ -4,12 +4,11 @@ import io.github.wilcywilson.crud.domain.enums.LoopStatus;
 import io.github.wilcywilson.crud.domain.enums.MainMenuChoice;
 import io.github.wilcywilson.crud.domain.enums.Menu;
 import io.github.wilcywilson.crud.shared.menu.MainOperations;
-import io.github.wilcywilson.crud.shared.menu.Operations;
 import io.github.wilcywilson.crud.shared.menu.MenuChoiceUtil;
-import io.github.wilcywilson.crud.ui.menu.MapMain;
-import io.github.wilcywilson.crud.ui.menu.SetMain;
 import io.github.wilcywilson.crud.ui.menu.ListMain;
+import io.github.wilcywilson.crud.ui.menu.MapMain;
 import io.github.wilcywilson.crud.ui.menu.QueueMain;
+import io.github.wilcywilson.crud.ui.menu.SetMain;
 
 import java.io.PrintStream;
 import java.util.Scanner;

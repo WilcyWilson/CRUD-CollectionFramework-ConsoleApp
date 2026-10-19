@@ -1,17 +1,16 @@
 package io.github.wilcywilson.crud.ui.menu;
 
-import io.github.wilcywilson.crud.infrastructure.engine.ArrayListStorageEngine;
-import io.github.wilcywilson.crud.infrastructure.engine.LinkedListStorageEngine;
-import io.github.wilcywilson.crud.shared.menu.ListOperations;
-import io.github.wilcywilson.crud.shared.menu.MenuChoiceUtil;
-import io.github.wilcywilson.crud.ui.MenuCreator;
 import io.github.wilcywilson.crud.domain.enums.ListMenuChoice;
 import io.github.wilcywilson.crud.domain.enums.LoopStatus;
 import io.github.wilcywilson.crud.domain.enums.Menu;
-import io.github.wilcywilson.crud.ui.UiText;
+import io.github.wilcywilson.crud.infrastructure.engine.ArrayListStorageEngine;
+import io.github.wilcywilson.crud.infrastructure.engine.LinkedListStorageEngine;
+import io.github.wilcywilson.crud.shared.menu.ListOperations;
 import io.github.wilcywilson.crud.shared.menu.MainOperations;
-import io.github.wilcywilson.crud.shared.menu.Operations;
+import io.github.wilcywilson.crud.shared.menu.MenuChoiceUtil;
 import io.github.wilcywilson.crud.ui.ConsolePrompt;
+import io.github.wilcywilson.crud.ui.MenuCreator;
+import io.github.wilcywilson.crud.ui.UiText;
 
 import java.io.PrintStream;
 import java.util.Scanner;
