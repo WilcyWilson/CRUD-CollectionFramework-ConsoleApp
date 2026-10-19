@@ -1,10 +1,10 @@
-package io.github.wilcywilson.crud.shared.interfaces;
+package io.github.wilcywilson.crud.shared.menu;
 
 import io.github.wilcywilson.crud.domain.enums.LoopStatus;
 
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public interface Operations {
+public interface ListOperations extends Operations {
     LoopStatus run(Scanner scanner, PrintStream out);
 }

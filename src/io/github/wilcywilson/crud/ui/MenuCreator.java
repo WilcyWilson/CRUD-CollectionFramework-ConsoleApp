@@ -1,11 +1,13 @@
 package io.github.wilcywilson.crud.ui;
 
 import io.github.wilcywilson.crud.domain.enums.Menu;
-import io.github.wilcywilson.crud.shared.interfaces.MenuChoice;
+import io.github.wilcywilson.crud.shared.menu.MenuChoice;
 
 import java.io.PrintStream;
 
-public class MenuCreator {
+public enum MenuCreator {
+    ;
+
     public static void createMenu(PrintStream out, Menu menu, String... additionalInfos) {
         StringBuilder options = new StringBuilder();
         for (MenuChoice menuChoice : menu.getChoices()) {

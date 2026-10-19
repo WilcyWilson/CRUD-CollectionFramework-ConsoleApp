@@ -1,6 +1,4 @@
-package io.github.wilcywilson.crud.shared.utils;
-
-import io.github.wilcywilson.crud.shared.interfaces.MenuChoice;
+package io.github.wilcywilson.crud.shared.menu;
 
 import java.util.Optional;
 

@@ -7,8 +7,8 @@ import io.github.wilcywilson.crud.domain.enums.ListMenuChoice;
 import io.github.wilcywilson.crud.domain.enums.LoopStatus;
 import io.github.wilcywilson.crud.domain.enums.Menu;
 import io.github.wilcywilson.crud.ui.UiText;
-import io.github.wilcywilson.crud.shared.interfaces.MainOperations;
-import io.github.wilcywilson.crud.shared.interfaces.Operations;
+import io.github.wilcywilson.crud.shared.menu.MainOperations;
+import io.github.wilcywilson.crud.shared.menu.Operations;
 import io.github.wilcywilson.crud.ui.ConsolePrompt;
 
 import java.io.PrintStream;

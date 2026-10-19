@@ -1,6 +1,6 @@
 package io.github.wilcywilson.crud.domain.enums;
 
-import io.github.wilcywilson.crud.shared.interfaces.MenuChoice;
+import io.github.wilcywilson.crud.shared.menu.MenuChoice;
 
 public enum CrudChoice implements MenuChoice {
     INSERT(1, "Insert"),

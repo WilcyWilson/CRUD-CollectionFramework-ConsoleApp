@@ -8,7 +8,7 @@ import java.util.Scanner;
 import io.github.wilcywilson.crud.domain.model.StudentDto;
 import io.github.wilcywilson.crud.domain.enums.LoopStatus;
 import io.github.wilcywilson.crud.ui.UiText;
-import io.github.wilcywilson.crud.shared.interfaces.MainOperations;
+import io.github.wilcywilson.crud.shared.menu.MainOperations;
 import io.github.wilcywilson.crud.ui.ConsolePrompt;
 
 public class MapMain implements MainOperations {
