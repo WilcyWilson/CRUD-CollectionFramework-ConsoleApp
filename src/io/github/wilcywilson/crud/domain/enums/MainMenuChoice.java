@@ -9,7 +9,7 @@ public enum MainMenuChoice implements MenuChoice {
     SET(2, "Set"),
     QUEUE(3, "Queue"),
     MAP(4, "Map"),
-    UNKNOWN(-1, "Unknown"),
+    INVALID_SELECTION(-1, "Invalid Selection"),
     EXIT(0, "Exit");
 
     private final int value;
@@ -30,12 +30,12 @@ public enum MainMenuChoice implements MenuChoice {
     }
 
     @Override
-    public int getValue() {
+    public int getCode() {
         return value;
     }
 
 
-    public String getName() {
+    public String getDisplayName() {
         return name;
     }
 }

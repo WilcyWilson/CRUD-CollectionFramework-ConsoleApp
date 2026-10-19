@@ -9,7 +9,7 @@ import io.github.wilcywilson.crud.domain.enums.Menu;
 import io.github.wilcywilson.crud.ui.UiText;
 import io.github.wilcywilson.crud.shared.interfaces.MainOperations;
 import io.github.wilcywilson.crud.shared.interfaces.Operations;
-import io.github.wilcywilson.crud.ui.InputUtil;
+import io.github.wilcywilson.crud.ui.ConsolePrompt;
 
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -26,18 +26,18 @@ public class ListMain implements MainOperations {
         while (true) {
             MenuCreator.createMenu(out, Menu.LIST_STORAGE_ENGINE, additionalInfo);
 
-            int input = InputUtil.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
+            int input = ConsolePrompt.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
 
             ListMenuChoice listMenuChoice = ListMenuChoice
                     .choiceFromInteger(input)
-                    .orElse(ListMenuChoice.UNKNOWN);
+                    .orElse(ListMenuChoice.INVALID_SELECTION);
 
             if (listMenuChoice == ListMenuChoice.EXIT) {
                 out.println(UiText.BACK_TO_MAIN.getMessage());
                 return LoopStatus.CONTINUE;
             }
 
-            if (listMenuChoice == ListMenuChoice.UNKNOWN) {
+            if (listMenuChoice == ListMenuChoice.INVALID_SELECTION) {
                 out.println(UiText.INVALID_SELECTION.getMessage());
                 continue;
             }
@@ -52,8 +52,8 @@ public class ListMain implements MainOperations {
 
     private Operations createListOperation(ListMenuChoice listMenuChoice) {
         return switch (listMenuChoice) {
-            case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoice.getName());
-            case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoice.getName());
+            case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoice.getDisplayName());
+            case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoice.getDisplayName());
             default -> throw new IllegalStateException("Unreachable" + listMenuChoice);
         };
     }

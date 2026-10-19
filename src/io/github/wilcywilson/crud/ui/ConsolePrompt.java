@@ -4,8 +4,10 @@ import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.function.Function;
 
-public class InputUtil {
-    private InputUtil() {
+public final class ConsolePrompt {
+    private ConsolePrompt() {
+        // Defensive Programming against Java Reflection since it can bypass Private access modifiers
+        throw new UnsupportedOperationException();
     }
 
     public static <T> T prompt(Scanner scanner, PrintStream out, String prompt, Function<String, T> parser) {
@@ -16,8 +18,10 @@ public class InputUtil {
             try {
                 out.println();
                 return parser.apply(line);
-            } catch (RuntimeException e) {
+            } catch (NumberFormatException e) {
                 out.println(UiText.INVALID_INPUT.getMessage());
+            } catch (Exception e) {
+                out.println("Error: " + e.getMessage());
             }
         }
     }

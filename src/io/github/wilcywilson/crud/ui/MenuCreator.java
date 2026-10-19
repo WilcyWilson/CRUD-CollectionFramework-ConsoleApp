@@ -9,11 +9,11 @@ public class MenuCreator {
     public static void createMenu(PrintStream out, Menu menu, String... additionalInfos) {
         StringBuilder options = new StringBuilder();
         for (MenuChoice menuChoice : menu.getChoices()) {
-            if (!(menuChoice.getValue() < 0)) {
+            if (!(menuChoice.getCode() < 0)) {
                 options
-                        .append(menuChoice.getValue())
+                        .append(menuChoice.getCode())
                         .append(".")
-                        .append(menuChoice.getName())
+                        .append(menuChoice.getDisplayName())
                         .append("\n");
             }
         }

@@ -19,12 +19,12 @@ public enum CrudChoice implements MenuChoice {
     }
 
     @Override
-    public int getValue() {
+    public int getCode() {
         return value;
     }
 
     @Override
-    public String getName() {
+    public String getDisplayName() {
         return name;
     }
 

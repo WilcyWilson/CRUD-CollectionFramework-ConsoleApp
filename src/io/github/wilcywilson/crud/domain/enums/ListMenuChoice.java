@@ -7,7 +7,7 @@ import java.util.Optional;
 public enum ListMenuChoice implements MenuChoice {
     ARRAYLIST(1, "ArrayList"),
     LINKED_LIST(2, "Linked List"),
-    UNKNOWN(-1, "Unknown"),
+    INVALID_SELECTION(-1, "Invalid Selection"),
     EXIT(0, "Exit");
 
     private final int value;
@@ -28,12 +28,12 @@ public enum ListMenuChoice implements MenuChoice {
     }
 
     @Override
-    public int getValue() {
+    public int getCode() {
         return value;
     }
 
     @Override
-    public String getName() {
+    public String getDisplayName() {
         return name;
     }
 }
