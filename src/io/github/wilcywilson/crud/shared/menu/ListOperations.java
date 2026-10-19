@@ -6,5 +6,4 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public interface ListOperations extends Operations {
-    LoopStatus run(Scanner scanner, PrintStream out);
 }
