@@ -7,8 +7,7 @@ public enum CrudChoice implements MenuChoice {
     DISPLAY(2, "Display"),
     SEARCH(3, "Search"),
     DELETE(4, "Delete"),
-    UPDATE(5, "Update"),
-    EXIT(0, "Exit");
+    UPDATE(5, "Update");
 
     private final int value;
     private final String name;

@@ -1,6 +1,7 @@
 package io.github.wilcywilson.crud.ui;
 
 import io.github.wilcywilson.crud.domain.enums.Menu;
+import io.github.wilcywilson.crud.domain.enums.StandardMenuChoice;
 import io.github.wilcywilson.crud.shared.menu.MenuChoice;
 
 import java.io.PrintStream;
@@ -19,6 +20,11 @@ public enum MenuCreator {
                         .append("\n");
             }
         }
+        options
+                .append(StandardMenuChoice.EXIT.getCode())
+                .append(".")
+                .append(StandardMenuChoice.EXIT.getDisplayName())
+                .append("\n");
         if (additionalInfos.length < 1) {
             out.printf("""
                     ------ %s ------

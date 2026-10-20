@@ -3,6 +3,7 @@ package io.github.wilcywilson.crud.ui.menu;
 import io.github.wilcywilson.crud.domain.enums.ListMenuChoice;
 import io.github.wilcywilson.crud.domain.enums.LoopStatus;
 import io.github.wilcywilson.crud.domain.enums.Menu;
+import io.github.wilcywilson.crud.domain.enums.StandardMenuChoice;
 import io.github.wilcywilson.crud.infrastructure.engine.ArrayListStorageEngine;
 import io.github.wilcywilson.crud.infrastructure.engine.LinkedListStorageEngine;
 import io.github.wilcywilson.crud.shared.menu.ListOperations;
@@ -13,6 +14,7 @@ import io.github.wilcywilson.crud.ui.MenuCreator;
 import io.github.wilcywilson.crud.ui.UiText;
 
 import java.io.PrintStream;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class ListMain implements MainOperations {
@@ -29,20 +31,19 @@ public class ListMain implements MainOperations {
 
             int input = ConsolePrompt.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
 
-            ListMenuChoice listMenuChoice = MenuChoiceUtil.fromCode(ListMenuChoice.class, input)
-                                                          .orElse(ListMenuChoice.INVALID_SELECTION);
-
-            if (listMenuChoice == ListMenuChoice.EXIT) {
+            if (input == StandardMenuChoice.EXIT.getCode()) {
                 out.println(UiText.BACK_TO_MAIN.getMessage());
                 return LoopStatus.CONTINUE;
             }
 
-            if (listMenuChoice == ListMenuChoice.INVALID_SELECTION) {
+            Optional<ListMenuChoice> listMenuChoice = MenuChoiceUtil.fromCode(ListMenuChoice.class, input);
+
+            if (listMenuChoice.isEmpty()) {
                 out.println(UiText.INVALID_SELECTION.getMessage());
                 continue;
             }
 
-            ListOperations listOperations = createListOperation(listMenuChoice);
+            ListOperations listOperations = createListOperation(listMenuChoice.orElseThrow());
 
             if (listOperations.run(scanner, out) == LoopStatus.EXIT) {
                 return LoopStatus.EXIT;
@@ -54,7 +55,6 @@ public class ListMain implements MainOperations {
         return switch (listMenuChoice) {
             case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoice.getDisplayName());
             case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoice.getDisplayName());
-            default -> throw new IllegalStateException("Unreachable" + listMenuChoice);
         };
     }
 

@@ -3,6 +3,7 @@ package io.github.wilcywilson.crud.ui;
 import io.github.wilcywilson.crud.domain.enums.LoopStatus;
 import io.github.wilcywilson.crud.domain.enums.MainMenuChoice;
 import io.github.wilcywilson.crud.domain.enums.Menu;
+import io.github.wilcywilson.crud.domain.enums.StandardMenuChoice;
 import io.github.wilcywilson.crud.shared.menu.MainOperations;
 import io.github.wilcywilson.crud.shared.menu.MenuChoiceUtil;
 import io.github.wilcywilson.crud.ui.menu.ListMain;
@@ -11,6 +12,7 @@ import io.github.wilcywilson.crud.ui.menu.QueueMain;
 import io.github.wilcywilson.crud.ui.menu.SetMain;
 
 import java.io.PrintStream;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Application {
@@ -27,20 +29,19 @@ public class Application {
             MenuCreator.createMenu(out, Menu.MAIN);
             int input = ConsolePrompt.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
 
-            MainMenuChoice mainMenuChoice = MenuChoiceUtil.fromCode(MainMenuChoice.class, input)
-                                                          .orElse(MainMenuChoice.INVALID_SELECTION);
-
-            if (mainMenuChoice == MainMenuChoice.EXIT) {
+            if (input == StandardMenuChoice.EXIT.getCode()) {
                 out.println(UiText.EXITING.getMessage());
                 return;
             }
 
-            if (mainMenuChoice == MainMenuChoice.INVALID_SELECTION) {
+            Optional<MainMenuChoice> mainMenuChoice = MenuChoiceUtil.fromCode(MainMenuChoice.class, input);
+
+            if (mainMenuChoice.isEmpty()) {
                 out.println(UiText.INVALID_SELECTION.getMessage());
                 continue;
             }
 
-            MainOperations mainOperations = createMainOperation(mainMenuChoice);
+            MainOperations mainOperations = createMainOperation(mainMenuChoice.orElseThrow());
 
             if (mainOperations.run(scanner, out) == LoopStatus.EXIT) {
                 return;
@@ -54,7 +55,6 @@ public class Application {
             case MAP -> new MapMain(mainMenuChoice.getDisplayName());
             case QUEUE -> new QueueMain();
             case SET -> new SetMain();
-            default -> throw new IllegalArgumentException("Unreachable" + mainMenuChoice);
         };
     }
 }

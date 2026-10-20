@@ -6,9 +6,7 @@ public enum MainMenuChoice implements MenuChoice {
     LIST(1, "List"),
     SET(2, "Set"),
     QUEUE(3, "Queue"),
-    MAP(4, "Map"),
-    INVALID_SELECTION(-1, "Invalid Selection"),
-    EXIT(0, "Exit");
+    MAP(4, "Map");
 
     private final int code;
     private final String displayName;

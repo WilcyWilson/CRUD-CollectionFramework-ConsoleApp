@@ -3,6 +3,7 @@ package io.github.wilcywilson.crud.ui.menu;
 import io.github.wilcywilson.crud.domain.enums.LoopStatus;
 import io.github.wilcywilson.crud.domain.enums.MapMenuChoice;
 import io.github.wilcywilson.crud.domain.enums.Menu;
+import io.github.wilcywilson.crud.domain.enums.StandardMenuChoice;
 import io.github.wilcywilson.crud.infrastructure.engine.HashMapStorageEngine;
 import io.github.wilcywilson.crud.infrastructure.engine.LinkedHashMapStorageEngine;
 import io.github.wilcywilson.crud.infrastructure.engine.TreeMapStorageEngine;
@@ -14,6 +15,7 @@ import io.github.wilcywilson.crud.ui.MenuCreator;
 import io.github.wilcywilson.crud.ui.UiText;
 
 import java.io.PrintStream;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class MapMain implements MainOperations {
@@ -30,20 +32,19 @@ public class MapMain implements MainOperations {
 
             int input = ConsolePrompt.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
 
-            MapMenuChoice mapMenuChoice = MenuChoiceUtil.fromCode(MapMenuChoice.class, input)
-                                                        .orElse(MapMenuChoice.INVALID_SELECTION);
-
-            if (mapMenuChoice == MapMenuChoice.EXIT) {
+            if (input == StandardMenuChoice.EXIT.getCode()) {
                 out.println(UiText.BACK_TO_MAIN.getMessage());
                 return LoopStatus.CONTINUE;
             }
 
-            if (mapMenuChoice == MapMenuChoice.INVALID_SELECTION) {
+            Optional<MapMenuChoice> mapMenuChoice = MenuChoiceUtil.fromCode(MapMenuChoice.class, input);
+
+            if (mapMenuChoice.isEmpty()) {
                 out.println(UiText.INVALID_SELECTION.getMessage());
                 continue;
             }
 
-            MapOperations mapOperations = createMapOperation(mapMenuChoice);
+            MapOperations mapOperations = createMapOperation(mapMenuChoice.orElseThrow());
 
             if (mapOperations.run(scanner, out) == LoopStatus.EXIT) {
                 return LoopStatus.EXIT;
@@ -55,8 +56,7 @@ public class MapMain implements MainOperations {
         return switch (mapMenuChoice) {
             case HASHMAP -> new HashMapStorageEngine(mapMenuChoice.getDisplayName());
             case LINKED_HASHMAP -> new LinkedHashMapStorageEngine(mapMenuChoice.getDisplayName());
-            case TREEMAP ->  new TreeMapStorageEngine(mapMenuChoice.getDisplayName());
-            default -> throw new IllegalStateException("Unreachable" + mapMenuChoice);
+            case TREEMAP -> new TreeMapStorageEngine(mapMenuChoice.getDisplayName());
         };
     }
 
