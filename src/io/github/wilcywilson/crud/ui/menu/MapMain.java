@@ -43,7 +43,7 @@ public class MapMain implements MainOperations {
                 continue;
             }
 
-            MapOperations mapOperations = createListOperation(mapMenuChoice);
+            MapOperations mapOperations = createMapOperation(mapMenuChoice);
 
             if (mapOperations.run(scanner, out) == LoopStatus.EXIT) {
                 return LoopStatus.EXIT;
@@ -51,7 +51,7 @@ public class MapMain implements MainOperations {
         }
     }
 
-    private MapOperations createListOperation(MapMenuChoice mapMenuChoice) {
+    private MapOperations createMapOperation(MapMenuChoice mapMenuChoice) {
         return switch (mapMenuChoice) {
             case HASHMAP -> new HashMapStorageEngine(mapMenuChoice.getDisplayName());
             case LINKED_HASHMAP -> new LinkedHashMapStorageEngine(mapMenuChoice.getDisplayName());
