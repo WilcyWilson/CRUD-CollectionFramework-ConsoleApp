@@ -2,13 +2,14 @@ package io.github.wilcywilson.crud;
 
 import io.github.wilcywilson.crud.ui.Application;
 
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class CollectionCrudApp {
 
     public static void main(String[] args) {
         var scanner = new Scanner(System.in);
-        var out = System.out;
+        PrintStream out = System.out;
         new Application(scanner, out).run();
     }
 }

@@ -15,7 +15,7 @@ public class LinkedListStorageEngine implements ListOperations {
     }
 
     @Override
-    public LoopStatus run(Scanner scanner, PrintStream out) {
-        return LoopStatus.EXIT;
+    public LoopStatus run() {
+        return null;
     }
 }

@@ -3,7 +3,6 @@ package io.github.wilcywilson.crud.domain.enums;
 import io.github.wilcywilson.crud.shared.menu.MenuChoice;
 
 public enum StandardMenuChoice implements MenuChoice {
-    INVALID_SELECTION(-1, "Invalid Selection"),
     EXIT(0, "Exit");
 
     private final int code;
