@@ -1,6 +1,6 @@
-package io.github.wilcywilson.crud.domain.enums;
+package io.github.wilcywilson.crud.ui.menu.enums;
 
-import io.github.wilcywilson.crud.shared.menu.MenuChoice;
+import io.github.wilcywilson.crud.ui.menu.MenuChoice;
 import io.github.wilcywilson.crud.ui.UiText;
 
 public enum Menu {

@@ -1,14 +1,15 @@
-package io.github.wilcywilson.crud.domain.enums;
+package io.github.wilcywilson.crud.ui.menu.enums;
 
-import io.github.wilcywilson.crud.shared.menu.MenuChoice;
+import io.github.wilcywilson.crud.ui.menu.MenuChoice;
 
-public enum StandardMenuChoice implements MenuChoice {
-    EXIT(0, "Exit");
+public enum ListMenuChoice implements MenuChoice {
+    ARRAYLIST(1, "ArrayList"),
+    LINKED_LIST(2, "Linked List");
 
     private final int code;
     private final String displayName;
 
-    StandardMenuChoice(int code, String displayName) {
+    ListMenuChoice(int code, String displayName) {
         this.code = code;
         this.displayName = displayName;
     }

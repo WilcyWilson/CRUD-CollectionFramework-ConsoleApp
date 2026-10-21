@@ -1,8 +1,8 @@
 package io.github.wilcywilson.crud.ui;
 
-import io.github.wilcywilson.crud.domain.enums.Menu;
-import io.github.wilcywilson.crud.domain.enums.StandardMenuChoice;
-import io.github.wilcywilson.crud.shared.menu.MenuChoice;
+import io.github.wilcywilson.crud.ui.menu.enums.Menu;
+import io.github.wilcywilson.crud.ui.menu.enums.StandardMenuChoice;
+import io.github.wilcywilson.crud.ui.menu.MenuChoice;
 
 import java.io.PrintStream;
 

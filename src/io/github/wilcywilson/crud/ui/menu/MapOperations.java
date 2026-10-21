@@ -1,4 +1,4 @@
-package io.github.wilcywilson.crud.shared.menu;
+package io.github.wilcywilson.crud.ui.menu;
 
 public interface MapOperations extends Operations{
 }

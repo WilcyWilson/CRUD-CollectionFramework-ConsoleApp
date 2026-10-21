@@ -1,9 +1,9 @@
 package io.github.wilcywilson.crud.ui;
 
-import io.github.wilcywilson.crud.domain.enums.LoopStatus;
-import io.github.wilcywilson.crud.domain.enums.MainMenuChoice;
-import io.github.wilcywilson.crud.domain.enums.Menu;
-import io.github.wilcywilson.crud.shared.menu.Operations;
+import io.github.wilcywilson.crud.ui.menu.enums.LoopStatus;
+import io.github.wilcywilson.crud.ui.menu.enums.MainMenuChoice;
+import io.github.wilcywilson.crud.ui.menu.enums.Menu;
+import io.github.wilcywilson.crud.ui.menu.Operations;
 import io.github.wilcywilson.crud.ui.menu.*;
 
 import java.io.PrintStream;

@@ -1,12 +1,11 @@
 package io.github.wilcywilson.crud.ui.menu;
 
-import io.github.wilcywilson.crud.domain.enums.LoopStatus;
-import io.github.wilcywilson.crud.domain.enums.MapMenuChoice;
-import io.github.wilcywilson.crud.domain.enums.Menu;
+import io.github.wilcywilson.crud.ui.menu.enums.LoopStatus;
+import io.github.wilcywilson.crud.ui.menu.enums.MapMenuChoice;
+import io.github.wilcywilson.crud.ui.menu.enums.Menu;
 import io.github.wilcywilson.crud.infrastructure.engine.HashMapStorageEngine;
 import io.github.wilcywilson.crud.infrastructure.engine.LinkedHashMapStorageEngine;
 import io.github.wilcywilson.crud.infrastructure.engine.TreeMapStorageEngine;
-import io.github.wilcywilson.crud.shared.menu.Operations;
 import io.github.wilcywilson.crud.ui.UiText;
 
 import java.io.PrintStream;

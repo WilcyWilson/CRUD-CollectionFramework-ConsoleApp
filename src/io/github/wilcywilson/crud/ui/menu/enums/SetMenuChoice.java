@@ -1,6 +1,6 @@
-package io.github.wilcywilson.crud.domain.enums;
+package io.github.wilcywilson.crud.ui.menu.enums;
 
-import io.github.wilcywilson.crud.shared.menu.MenuChoice;
+import io.github.wilcywilson.crud.ui.menu.MenuChoice;
 
 public enum SetMenuChoice implements MenuChoice {
     HASH_SET(1, "HashSet"),

@@ -1,15 +1,14 @@
-package io.github.wilcywilson.crud.domain.enums;
+package io.github.wilcywilson.crud.ui.menu.enums;
 
-import io.github.wilcywilson.crud.shared.menu.MenuChoice;
+import io.github.wilcywilson.crud.ui.menu.MenuChoice;
 
-public enum QueueMenuChoice implements MenuChoice {
-    PRIORITY_QUEUE(1, "PriorityQueue"),
-    ARRAY_DEQUE(2, "ArrayDeque");
+public enum StandardMenuChoice implements MenuChoice {
+    EXIT(0, "Exit");
 
     private final int code;
     private final String displayName;
 
-    QueueMenuChoice(int code, String displayName){
+    StandardMenuChoice(int code, String displayName) {
         this.code = code;
         this.displayName = displayName;
     }

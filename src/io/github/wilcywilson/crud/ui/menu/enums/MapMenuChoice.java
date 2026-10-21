@@ -1,6 +1,6 @@
-package io.github.wilcywilson.crud.domain.enums;
+package io.github.wilcywilson.crud.ui.menu.enums;
 
-import io.github.wilcywilson.crud.shared.menu.MenuChoice;
+import io.github.wilcywilson.crud.ui.menu.MenuChoice;
 
 public enum MapMenuChoice implements MenuChoice {
     HASHMAP(1, "HashMap"),

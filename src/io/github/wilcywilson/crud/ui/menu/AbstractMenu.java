@@ -1,11 +1,8 @@
 package io.github.wilcywilson.crud.ui.menu;
 
-import io.github.wilcywilson.crud.domain.enums.LoopStatus;
-import io.github.wilcywilson.crud.domain.enums.Menu;
-import io.github.wilcywilson.crud.domain.enums.StandardMenuChoice;
-import io.github.wilcywilson.crud.shared.menu.MenuChoice;
-import io.github.wilcywilson.crud.shared.menu.MenuChoiceUtil;
-import io.github.wilcywilson.crud.shared.menu.Operations;
+import io.github.wilcywilson.crud.ui.menu.enums.LoopStatus;
+import io.github.wilcywilson.crud.ui.menu.enums.Menu;
+import io.github.wilcywilson.crud.ui.menu.enums.StandardMenuChoice;
 import io.github.wilcywilson.crud.ui.ConsolePrompt;
 import io.github.wilcywilson.crud.ui.MenuCreator;
 import io.github.wilcywilson.crud.ui.UiText;

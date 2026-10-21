@@ -1,7 +1,7 @@
 package io.github.wilcywilson.crud.infrastructure.engine;
 
-import io.github.wilcywilson.crud.domain.enums.LoopStatus;
-import io.github.wilcywilson.crud.shared.menu.MapOperations;
+import io.github.wilcywilson.crud.ui.menu.enums.LoopStatus;
+import io.github.wilcywilson.crud.ui.menu.MapOperations;
 
 public class LinkedHashMapStorageEngine implements MapOperations {
 
