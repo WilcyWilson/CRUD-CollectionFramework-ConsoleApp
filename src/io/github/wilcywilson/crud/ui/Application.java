@@ -20,8 +20,8 @@ public class Application extends AbstractMenu<MainMenuChoice> {
         return switch (mainMenuChoice) {
             case LIST -> new ListMainMenu(scanner, out, mainMenuChoice.getDisplayName());
             case MAP -> new MapMainMenu(scanner, out, mainMenuChoice.getDisplayName());
-            case QUEUE -> new QueueMainMenu();
-            case SET -> new SetMainMenu();
+            case QUEUE -> new QueueMainMenu(scanner, out, mainMenuChoice.getDisplayName());
+            case SET -> new SetMainMenu(scanner, out, mainMenuChoice.getDisplayName());
         };
     }
 }

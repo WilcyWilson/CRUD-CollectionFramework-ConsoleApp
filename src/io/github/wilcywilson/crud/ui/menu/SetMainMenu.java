@@ -1,151 +1,31 @@
 package io.github.wilcywilson.crud.ui.menu;
 
 import io.github.wilcywilson.crud.domain.enums.LoopStatus;
-import io.github.wilcywilson.crud.domain.model.StudentDto;
-import io.github.wilcywilson.crud.shared.menu.MainOperations;
+import io.github.wilcywilson.crud.domain.enums.Menu;
+import io.github.wilcywilson.crud.domain.enums.SetMenuChoice;
+import io.github.wilcywilson.crud.infrastructure.engine.HashMapStorageEngine;
+import io.github.wilcywilson.crud.infrastructure.engine.LinkedHashMapStorageEngine;
+import io.github.wilcywilson.crud.shared.menu.Operations;
+import io.github.wilcywilson.crud.ui.UiText;
 
-import java.util.HashSet;
+import java.io.PrintStream;
+import java.util.Scanner;
 
 
-public class SetMainMenu implements MainOperations {
-    static HashSet<StudentDto> hs = new HashSet<>();
+public class SetMainMenu extends AbstractMenu<SetMenuChoice> {
+    public SetMainMenu(Scanner scanner, PrintStream out, String additionalInfo) {
+        super(scanner, out, Menu.SET_STORAGE_ENGINE, SetMenuChoice.class, UiText.BACK_TO_MAIN.getMessage(), LoopStatus.CONTINUE, additionalInfo);
+    }
 
     @Override
-    public LoopStatus run() {
-        return null;
+    protected Operations createOperation(SetMenuChoice setMenuChoice) {
+        return switch (setMenuChoice) {
+            case HASH_SET -> new HashMapStorageEngine(setMenuChoice.getDisplayName());
+            case LINKED_HASH_SET -> new LinkedHashMapStorageEngine(setMenuChoice.getDisplayName());
+            case TREE_SET -> new LinkedHashMapStorageEngine(setMenuChoice.getDisplayName());
+        };
     }
 }
-//    @Override
-//    public LoopStatus run(Scanner scanner, PrintStream out) {
-//        int ch;
-//        do {
-//            ch = ConsolePrompt.prompt(scanner, out, UiText.ENTER_YOUR_CHOICE.getMessage(), Integer::parseInt);
-//
-//            switch (ch) {
-//                case 1:
-//                    System.out.println();
-//                    insertHashSet();
-//                    System.out.println();
-//                    break;
-//                case 2:
-//                    System.out.println();
-//                    displayHashSet();
-//                    System.out.println();
-//                    break;
-//                case 3:
-//                    System.out.println();
-//                    searchHashSet();
-//                    System.out.println();
-//                    break;
-//                case 4:
-//                    System.out.println();
-//                    deleteHashSet();
-//                    System.out.println();
-//                    break;
-//                case 5:
-//                    System.out.println();
-//                    updateHashSet();
-//                    System.out.println();
-//                    break;
-//            }
-//        } while (ch != 0);
-//        return LoopStatus.EXIT;
-//    }
-//
-//    public static void insertHashSet() {
-//        Scanner sId = new Scanner(System.in);
-//        Scanner sName = new Scanner(System.in);
-//        Scanner sFaculty = new Scanner(System.in);
-//        System.out.println("Enter Student Id :");
-//        int studentId = sId.nextInt();
-//        System.out.println("Enter Student Name :");
-//        String studentName = sName.nextLine();
-//        System.out.println("Enter Student Faculty :");
-//        String studentFaculty = sFaculty.nextLine();
-//        hs.add(new StudentDto(studentId, studentName, studentFaculty));
-//    }
-//
-//    public static void displayHashSet() {
-//        "-".repeat(20);
-//        Iterator<StudentDto> itr = hs.iterator();
-//        while (itr.hasNext()) {
-//            StudentDto student = itr.next();
-//            System.out.println(student);
-//        }
-//        "-".repeat(20);
-//    }
-//
-//    public static void searchHashSet() {
-//        boolean found = false;
-//        Scanner sId = new Scanner(System.in);
-//        System.out.println("Enter Student Id to Search:");
-//        int studentId = sId.nextInt();
-//        "-".repeat(20);
-//        Iterator<StudentDto> itr = hs.iterator();
-//        while (itr.hasNext()) {
-//            StudentDto student = itr.next();
-//            if (student.studentId() == studentId) {
-//                System.out.println("Record Found");
-//                System.out.println(student);
-//                found = true;
-//            }
-//        }
-//        if (!found) {
-//            System.out.println("Record Not Found");
-//        }
-//        "-".repeat(20);
-//    }
-//
-//    public static void deleteHashSet() {
-//        boolean found = false;
-//        Scanner sId = new Scanner(System.in);
-//        System.out.println("Enter Student Id to Delete:");
-//        int studentId = sId.nextInt();
-//        "-".repeat(20);
-//        Iterator<StudentDto> itr = hs.iterator();
-//        while (itr.hasNext()) {
-//            StudentDto student = itr.next();
-//            if (student.studentId() == studentId) {
-//                itr.remove();
-//                found = true;
-//            }
-//        }
-//        if (!found) {
-//            System.out.println("Record Not Found");
-//        } else {
-//            System.out.println("Record Found and Deleted Successfully");
-//        }
-//        "-".repeat(20);
-//    }
-//
-//    public static void updateHashSet() {
-//        boolean found = false;
-//        Scanner sId = new Scanner(System.in);
-//        Scanner sName = new Scanner(System.in);
-//        Scanner sFaculty = new Scanner(System.in);
-//        System.out.println("Enter Student Id to Update:");
-//        int studentId = sId.nextInt();
-//        "-".repeat(20);
-//        Iterator<StudentDto> itr = hs.iterator();
-//        while (itr.hasNext()) {
-//            StudentDto student = itr.next();
-//            if (student.studentId() == studentId) {
-//                hs.remove(student);
-//                System.out.println("Enter new Student Name :");
-//                String studentName = sName.nextLine();
-//                System.out.println("Enter new Student Faculty :");
-//                String studentFaculty = sFaculty.nextLine();
-//                hs.add(new StudentDto(studentId, studentName, studentFaculty));
-//                found = true;
-//            }
-//        }
-//        if (!found) {
-//            System.out.println("Record Not Found");
-//        } else {
-//            System.out.println("Record Updated Successfully");
-//        }
-//        "-".repeat(20);
-//    }
 
 
 
