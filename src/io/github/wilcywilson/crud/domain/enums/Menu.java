@@ -4,7 +4,7 @@ import io.github.wilcywilson.crud.shared.menu.MenuChoice;
 import io.github.wilcywilson.crud.ui.UiText;
 
 public enum Menu {
-    MAIN(UiText.CHOOSE_COLLECTION_FRAMEWORK.getMessage(), MainMenuChoice.values()),
+    MAIN(UiText.CHOOSE_STORAGE_TYPE.getMessage(), MainMenuChoice.values()),
     LIST_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), ListMenuChoice.values()),
     MAP_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), MapMenuChoice.values()),
     QUEUE_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), QueueMenuChoice.values()),

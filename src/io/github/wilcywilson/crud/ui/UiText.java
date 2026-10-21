@@ -6,8 +6,8 @@ public enum UiText {
     BACK_TO_MAIN("Back to Main Menu....."),
     ENTER_YOUR_CHOICE("Enter Your Choice : "),
     INVALID_INPUT("Invalid Input. Please try again."),
-    CHOOSE_COLLECTION_FRAMEWORK("Choose the Collection Framework"),
-    CHOOSE_STORAGE_ENGINE("Choose the Storage Engine");
+    CHOOSE_STORAGE_TYPE("Choose Storage Type"),
+    CHOOSE_STORAGE_ENGINE("Choose Storage Engine");
 
     private final String message;
 
