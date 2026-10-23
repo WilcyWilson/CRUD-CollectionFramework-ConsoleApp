@@ -2,8 +2,9 @@ package io.github.wilcywilson.crud.ui.menu.enums;
 
 import io.github.wilcywilson.crud.ui.menu.MenuChoice;
 import io.github.wilcywilson.crud.ui.UiText;
+import io.github.wilcywilson.crud.ui.menu.Titled;
 
-public enum Menu {
+public enum Menu implements Titled {
     MAIN(UiText.CHOOSE_STORAGE_TYPE.getMessage(), MainMenuChoice.values()),
     LIST_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), ListMenuChoice.values()),
     MAP_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), MapMenuChoice.values()),
@@ -18,16 +19,9 @@ public enum Menu {
         this.choices = choices;
     }
 
-    public String getTitle(String... additionalInfos) {
-        StringBuilder info = new StringBuilder();
-        info.append(title);
-        for (String additionalInfo : additionalInfos) {
-            info
-                    .append(" [")
-                    .append(additionalInfo)
-                    .append("]");
-        }
-        return info.toString();
+    @Override
+    public String getBaseTitle() {
+        return title;
     }
 
     public MenuChoice[] getChoices() {

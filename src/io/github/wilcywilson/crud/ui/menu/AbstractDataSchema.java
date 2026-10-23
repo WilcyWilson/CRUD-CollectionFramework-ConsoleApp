@@ -1,8 +1,8 @@
 package io.github.wilcywilson.crud.ui.menu;
 
-import io.github.wilcywilson.crud.ui.UiText;
 import io.github.wilcywilson.crud.ui.WizardCreator;
 import io.github.wilcywilson.crud.ui.menu.enums.LoopStatus;
+import io.github.wilcywilson.crud.ui.menu.enums.Wizard;
 
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -22,7 +22,7 @@ public abstract class AbstractDataSchema implements Operations {
     @Override
     public LoopStatus run() {
         while (true) {
-            WizardCreator.createWizard(out, UiText.DEFINE_DATA_SCHEMA.getMessage(), additionalInfos);
+            WizardCreator.createWizard(out, Wizard.DEFINE_STORAGE_SCHEMA, additionalInfos);
             return LoopStatus.EXIT;
         }
     }
