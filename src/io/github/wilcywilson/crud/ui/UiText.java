@@ -7,7 +7,8 @@ public enum UiText {
     ENTER_YOUR_CHOICE("Enter Your Choice : "),
     INVALID_INPUT("Invalid Input. Please try again."),
     CHOOSE_STORAGE_TYPE("Choose Storage Type"),
-    CHOOSE_STORAGE_ENGINE("Choose Storage Engine");
+    CHOOSE_STORAGE_ENGINE("Choose Storage Engine"),
+    DEFINE_DATA_SCHEMA("Define Your Data Schema");
 
     private final String message;
 

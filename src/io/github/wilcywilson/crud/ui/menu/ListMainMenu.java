@@ -18,7 +18,7 @@ public class ListMainMenu extends AbstractMenu<ListMenuChoice> {
     @Override
     protected Operations createOperation(ListMenuChoice listMenuChoice) {
         return switch (listMenuChoice) {
-            case ARRAYLIST -> new ArrayListStorageEngine(listMenuChoice.getDisplayName());
+            case ARRAYLIST -> new ArrayListStorageEngine(scanner, out, listMenuChoice.getDisplayName());
             case LINKED_LIST -> new LinkedListStorageEngine(listMenuChoice.getDisplayName());
         };
     }
