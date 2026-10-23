@@ -8,8 +8,7 @@ public enum Menu {
     LIST_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), ListMenuChoice.values()),
     MAP_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), MapMenuChoice.values()),
     QUEUE_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), QueueMenuChoice.values()),
-    SET_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), SetMenuChoice.values()),
-    DEFINE_DATA_SCHEMA(UiText.DEFINE_DATA_SCHEMA.getMessage(), BlankMenuChoice.values());
+    SET_STORAGE_ENGINE(UiText.CHOOSE_STORAGE_ENGINE.getMessage(), SetMenuChoice.values());
 
     private final String title;
     private final MenuChoice[] choices;
