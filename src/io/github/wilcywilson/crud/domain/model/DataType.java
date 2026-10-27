@@ -5,21 +5,27 @@ import io.github.wilcywilson.crud.domain.exception.InvalidValueException;
 import java.util.function.Function;
 
 public enum DataType {
-    INTEGER("int", Integer.class, Integer::parseInt),
-    STRING("String", String.class, text -> text),
-    BOOLEAN("Boolean", Boolean.class, Boolean::parseBoolean);
+    INTEGER(1,"int", Integer.class, Integer::parseInt),
+    STRING(2,"String", String.class, text -> text),
+    BOOLEAN(3,"Boolean", Boolean.class, Boolean::parseBoolean);
 
+    private final int code;
     private final String label;
     private final Class<?> javaType;
     private final Function<String, Object> parser;
 
-    DataType(String label, Class<?> javaType, Function<String, Object> parser) {
+    DataType(int code, String label, Class<?> javaType, Function<String, Object> parser) {
+        this.code = code;
         this.label = label;
         this.javaType = javaType;
         this.parser = parser;
     }
 
-    public String label() {
+    public int getCode() {
+        return code;
+    }
+
+    public String getLabel() {
         return label;
     }
 
