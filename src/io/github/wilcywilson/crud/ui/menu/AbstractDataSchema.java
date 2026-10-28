@@ -9,6 +9,7 @@ import io.github.wilcywilson.crud.ui.menu.enums.StandardMenuChoice;
 import io.github.wilcywilson.crud.ui.menu.enums.Wizard;
 
 import java.io.PrintStream;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.StringJoiner;
 
@@ -26,27 +27,39 @@ public abstract class AbstractDataSchema implements Operations {
 
     @Override
     public LoopStatus run() {
+        WizardCreator.createWizard(out, Wizard.DEFINE_STORAGE_SCHEMA, additionalInfos);
         while (true) {
-            WizardCreator.createWizard(out, Wizard.DEFINE_STORAGE_SCHEMA, additionalInfos);
             int count = 0;
-            while (true) {
-                String columnName = ConsolePrompt.prompt(scanner, out, UiText.ENTER_COLUMN_NAME.format(++count), s -> s);
+            String columnName;
+            do {
+                columnName = ConsolePrompt.prompt(scanner, out, UiText.ENTER_COLUMN_NAME.format(++count), s -> s);
 
-                if (columnName.equalsIgnoreCase(String.valueOf(StandardMenuChoice.EXIT.getCode()))) {
-                    return LoopStatus.CONTINUE;
-                }
+            } while (columnName.equalsIgnoreCase(String.valueOf(StandardMenuChoice.EXIT.getCode())));
 
+            while(true) {
                 int input = ConsolePrompt.prompt(scanner, out, UiText.ENTER_DATA_TYPE.format(columnName, getDataTypeChoices()), Integer::parseInt);
+
+                Optional<DataType> menuChoice = MenuChoiceUtil.fromCode(DataType.class, input);
+
+                if (menuChoice.isEmpty()) {
+                    out.println(UiText.INVALID_SELECTION.getMessage());
+                } else{
+                    break;
+                }
             }
         }
     }
 
-    public String getDataTypeChoices(){
+    public String getDataTypeChoices() {
         StringJoiner stringJoiner = new StringJoiner(", ");
-        for (DataType dataType: DataType.values()){
-            stringJoiner.add(dataType.getCode() + " = " + dataType.getLabel() );
+        for (DataType dataType : DataType.values()) {
+            stringJoiner.add(dataType.getCode() + " = " + dataType.getDisplayName());
         }
         return stringJoiner.toString();
     }
-
 }
+
+
+
+
+
