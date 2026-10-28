@@ -31,22 +31,27 @@ public abstract class AbstractDataSchema implements Operations {
         while (true) {
             int count = 0;
             String columnName;
-            do {
+            while (true) {
                 columnName = ConsolePrompt.prompt(scanner, out, UiText.ENTER_COLUMN_NAME.format(++count), s -> s);
 
-            } while (columnName.equalsIgnoreCase(String.valueOf(StandardMenuChoice.EXIT.getCode())));
-
-            while(true) {
-                int input = ConsolePrompt.prompt(scanner, out, UiText.ENTER_DATA_TYPE.format(columnName, getDataTypeChoices()), Integer::parseInt);
-
-                Optional<DataType> menuChoice = MenuChoiceUtil.fromCode(DataType.class, input);
-
-                if (menuChoice.isEmpty()) {
-                    out.println(UiText.INVALID_SELECTION.getMessage());
-                } else{
-                    break;
+                if (columnName.equalsIgnoreCase(String.valueOf(StandardMenuChoice.EXIT.getCode()))) {
+                    return LoopStatus.CONTINUE;
                 }
+
+                while (true) {
+                    int input = ConsolePrompt.prompt(scanner, out, UiText.ENTER_DATA_TYPE.format(columnName, getDataTypeChoices()), Integer::parseInt);
+
+                    Optional<DataType> menuChoice = MenuChoiceUtil.fromCode(DataType.class, input);
+
+                    if (menuChoice.isEmpty()) {
+                        out.println(UiText.INVALID_SELECTION.getMessage());
+                    } else {
+                        break;
+                    }
+                }
+
             }
+
         }
     }
 
